@@ -30,6 +30,7 @@ import ch.admin.bar.siard2.jdbc.MsSqlDriver;
 import ch.admin.bar.siard2.jdbc.MySqlDriver;
 import ch.admin.bar.siard2.jdbc.OracleDriver;
 import ch.admin.bar.siard2.jdbc.PostgresDriver;
+import ch.admin.bar.siard2.jdbc.AltibaseDriver;
 import ch.enterag.utils.EU;
 import ch.enterag.utils.jdbc.BaseDriver;
 
@@ -91,7 +92,11 @@ public class SiardConnection extends Properties
     propDrivers.put(CUBRIDDriver.sCUBRID_SCHEME, CUBRIDDriver.class.getName());
     propDrivers.put(CUBRIDDriver.sCUBRID_SCHEME+sTITLE_SUFFIX, "CUBRID");
     propDrivers.put(CUBRIDDriver.sCUBRID_SCHEME+sSAMPLE_SUFFIX, "jdbc:cubrid:dbserver.enterag.ch:30000:testdb:dba::?charset=utf8"); /*IntraDIGM*/
-    
+
+    propDrivers.put(AltibaseDriver.sAltibase_SCHEME, AltibaseDriver.class.getName());
+    propDrivers.put(AltibaseDriver.sAltibase_SCHEME+sTITLE_SUFFIX, "ALTIBASE");
+    propDrivers.put(AltibaseDriver.sAltibase_SCHEME+sSAMPLE_SUFFIX, "jdbc:Altibase://dbserver.enterag.ch:20300/mydb");
+
     propDrivers.put(PostgresDriver.sPOSTGRES_SCHEME, PostgresDriver.class.getName());
     propDrivers.put(PostgresDriver.sPOSTGRES_SCHEME+sTITLE_SUFFIX, "PostgreSQL");
     propDrivers.put(PostgresDriver.sPOSTGRES_SCHEME+sSAMPLE_SUFFIX, "jdbc:postgresql://dbserver.enterag.ch:5432/testdb");

@@ -119,6 +119,12 @@ Created    : 01.06.2017, Hartwig Thomas
 	<property name="jarcubrid" value="cubrid.jar" />
 	<property name="jarjdbccubrid" value="jdbccubrid.jar" />
 	<property name="cpjdbccubrid" value="${dirlib}/${jarjdbccubrid};${dirlib}/${jarcubrid}" />
+	<!-- jdbcaltibase jars -->
+	<property name="jaraltibasejdbc" value="Altibase.jar" />
+	<property name="jarjdbcaltibase" value="jdbcaltibase.jar" />
+	<property name="jarjdbcaltibasetest" value="jdbcaltibase-test.jar" />
+	<property name="cpjdbcaltibase" value="${dirlib}/${jarjdbcaltibase};${dirlib}/${jaraltibasejdbc}" />
+	<property name="cpjdbcaltibase-test" value="${dirlib}/${jarjdbcaltibasetest}" />
 	<!-- siardapi -->
 	<property name="jarsiardapi" value="siardapi.jar" />
 	<property name="cpsiardapi" value="${dirlib}/${jarsiardapi}" />
