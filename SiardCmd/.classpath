@@ -52,6 +52,8 @@
 	<classpathentry kind="lib" path="lib/zip64.jar"/>
 	<classpathentry kind="lib" path="lib/cubird.jar"/>
 	<classpathentry kind="lib" path="lib/jdbccubrid.jar"/>
+	<classpathentry kind="lib" path="lib/Altibase.jar"/>
+	<classpathentry kind="lib" path="lib/jdbcaltibase.jar"/>
 	<classpathentry kind="lib" path="lib/jsch-0.1.55.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/SiardApi"/>
 	<classpathentry kind="output" path="build"/>
