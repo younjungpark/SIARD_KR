@@ -31,6 +31,8 @@ public class AltibasePredefinedType extends PredefinedType
 		mapISO_TO_ALTIBASE.put(PreType.VARBINARY, "BLOB");
 		mapISO_TO_ALTIBASE.put(PreType.CHAR, "CHAR");
 		mapISO_TO_ALTIBASE.put(PreType.VARCHAR, "VARCHAR");
+		mapISO_TO_ALTIBASE.put(PreType.NCHAR, "NCHAR");
+		mapISO_TO_ALTIBASE.put(PreType.NVARCHAR, "NVARCHAR");
 		mapISO_TO_ALTIBASE.put(PreType.CLOB, "CLOB");
 		mapISO_TO_ALTIBASE.put(PreType.BLOB, "BLOB");
 		mapISO_TO_ALTIBASE.put(PreType.NUMERIC, "NUMERIC");
