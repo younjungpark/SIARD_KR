@@ -69,4 +69,12 @@ public class AltibaseSqlFactory extends BaseSqlFactory implements SqlFactory
 		return new AltibaseDropTableStatement(this);
 	} /* newDropTableStatement */
 
+	/* ------------------------------------------------------------------------ */
+	/** Creates a new DROP VIEW statement */
+	@Override
+	public DropViewStatement newDropViewStatement()
+	{
+		return new AltibaseDropViewStatement(this);
+	} /* newDropTableStatement */
+
 } /* class CubridSqlFactory */

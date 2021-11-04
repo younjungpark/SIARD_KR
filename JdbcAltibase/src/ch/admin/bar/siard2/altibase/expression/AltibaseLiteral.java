@@ -11,37 +11,47 @@ Created    : 28.06.2016, Simon Jutz
 ======================================================================*/
 package ch.admin.bar.siard2.altibase.expression;
 
+import ch.admin.bar.siard2.altibase.AltibaseLiterals;
 import ch.enterag.sqlparser.*;
 import ch.enterag.sqlparser.expression.*;
-import ch.admin.bar.siard2.altibase.*;
+
 
 /*====================================================================*/
-/** AltibaseLiteral implements the value translation from ISO SQL:2008
+
+/**
+ * AltibaseLiteral implements the value translation from ISO SQL:2008
  * to Altibase
+ *
  * @author YounJung Park
  */
-public class AltibaseLiteral
-        extends Literal
+public class AltibaseLiteral extends Literal
 {
-
-    @Override
-    public String format()
+  @Override
+  public String format()
+  {
+    String sFormatted = "";
+    if (getBytes() != null)
     {
-        String sFormatted = "";
-        if (getBytes() != null) {
-            sFormatted = AltibaseLiterals.formatBytesLiteral(getBytes());
-        } else if (getBoolean() != null) {
-            sFormatted = AltibaseLiterals.formatBooleanLiteral(getBoolean());
-        } else if (getTime() != null) {
-            sFormatted = AltibaseLiterals.formatTimeLiteral(getTime());
-        } else {
-            sFormatted = super.format();
-        }
-        return sFormatted;
-    } /* format */
+      sFormatted = AltibaseLiterals.formatBytesLiteral(getBytes());
+    }
+    else if (getBoolean() != null)
+    {
+      sFormatted = AltibaseLiterals.formatBooleanLiteral(getBoolean());
+    }
+    else if (getTime() != null)
+    {
+      sFormatted = AltibaseLiterals.formatTimeLiteral(getTime());
+    }
+    else
+    {
+      sFormatted = super.format();
+    }
+    return sFormatted;
+  } /* format */
 
-    public AltibaseLiteral(SqlFactory sf) {
-        super(sf);
-    } /* constructor */
+  public AltibaseLiteral(SqlFactory sf)
+  {
+    super(sf);
+  } /* constructor */
 
 } /* class AltibaseLiteral */

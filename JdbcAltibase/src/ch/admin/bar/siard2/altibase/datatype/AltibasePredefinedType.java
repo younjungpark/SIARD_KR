@@ -27,8 +27,8 @@ public class AltibasePredefinedType extends PredefinedType
 	private static Map<PreType, String> mapISO_TO_ALTIBASE = new HashMap<PreType, String>();
 
 	static {
-		mapISO_TO_ALTIBASE.put(PreType.BINARY, "BLOB");
-		mapISO_TO_ALTIBASE.put(PreType.VARBINARY, "BLOB");
+		mapISO_TO_ALTIBASE.put(PreType.BINARY, "BYTE");
+		mapISO_TO_ALTIBASE.put(PreType.VARBINARY, "VARBYTE");
 		mapISO_TO_ALTIBASE.put(PreType.CHAR, "CHAR");
 		mapISO_TO_ALTIBASE.put(PreType.VARCHAR, "VARCHAR");
 		mapISO_TO_ALTIBASE.put(PreType.NCHAR, "NCHAR");
@@ -99,7 +99,9 @@ public class AltibasePredefinedType extends PredefinedType
 		else if (getType() == PreType.CHAR ||
 				getType() == PreType.VARCHAR ||
 				getType() == PreType.NCHAR ||
-				getType() == PreType.NVARCHAR)
+				getType() == PreType.NVARCHAR ||
+				getType() == PreType.BINARY ||
+				getType() == PreType.VARBINARY)
 		{
 			sType = sType + formatLength(); // (M)
 		}

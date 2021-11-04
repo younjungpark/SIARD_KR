@@ -14,6 +14,7 @@ import ch.enterag.utils.jdbc.*;
 
 public class AltibaseConnectionTester extends BaseConnectionTester
 {
+  protected static final String _sSQL = "SELECT 1 FROM dual";
   private static final ConnectionProperties _cp = new ConnectionProperties();
   private static final String _sDB_URL = AltibaseDriver.getUrl("//" + _cp.getHost() + ":" + _cp.getPort()+"/"+_cp.getCatalog());
   private static final String _sDB_USER = _cp.getUser();
@@ -34,10 +35,16 @@ public class AltibaseConnectionTester extends BaseConnectionTester
       dsAltibase.setUser(_sDBA_USER);
       dsAltibase.setPassword(_sDBA_PASSWORD);
       AltibaseConnection connAltibase = (AltibaseConnection) dsAltibase.getConnection();
+      // change date format to yyyy-MM-dd
+      TestAltibaseDatabase.changeDateFormat(connAltibase);
+
+      // drop and create the test user
+      TestAltibaseDatabase.dropUser(connAltibase, _sDB_USER);
+      TestAltibaseDatabase.createUser(connAltibase, _sDB_USER, _sDB_PASSWORD);
+
       new TestAltibaseDatabase(connAltibase);
-      TestAltibaseDatabase.grantSchemaUser(connAltibase,null, _sDB_USER);
+      TestAltibaseDatabase.grantSchemaUser(connAltibase, _sDB_USER);
       new TestSqlDatabase(connAltibase);
-      TestAltibaseDatabase.grantSchemaUser(connAltibase,null, _sDB_USER);
       connAltibase.close();
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -87,4 +94,109 @@ public class AltibaseConnectionTester extends BaseConnectionTester
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
   } /* testSetCatalog */
 
+  @Test
+  @Override
+  public void testPrepareStatement()
+  {
+    enter();
+    try { _connAltibase.prepareStatement(_sSQL); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  }
+
+  @Test
+  @Override
+  public void testPrepareCall()
+  {
+    enter();
+    try { _connAltibase.prepareCall(_sSQL); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareCall*/
+
+  @Test
+  @Override
+  public void testPrepareStatement_String_Int()
+  {
+    enter();
+    try { _connAltibase.prepareStatement(_sSQL, Statement.NO_GENERATED_KEYS); }
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareStatement_String_Int */
+
+  @Test
+  @Override
+  public void testPrepareCall_String_Int_Int()
+  {
+    enter();
+    try
+    {
+      _connAltibase.prepareCall(_sSQL,
+              ResultSet.TYPE_SCROLL_INSENSITIVE,
+              ResultSet.CONCUR_READ_ONLY);
+    }
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareCall_String_Int_Int */
+
+  @Test
+  public void testPrepareStatement_String_Int_Int()
+  {
+    enter();
+    try
+    {
+      _connAltibase.prepareStatement(_sSQL,
+              ResultSet.TYPE_SCROLL_INSENSITIVE,
+              ResultSet.CONCUR_READ_ONLY);
+    }
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareStatement_String_Int_Int */
+
+  @Test
+  @Override
+  public void testPrepareStatement_String_AString()
+  {
+    enter();
+    try { _connAltibase.prepareStatement(_sSQL,new String[]{"COL_A", "COL_B"}); }
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareStatement_String_AString */
+
+  @Test
+  public void testPrepareStatement_String_Int_Int_Int()
+  {
+    enter();
+    try
+    {
+      _connAltibase.prepareStatement(_sSQL,
+              ResultSet.TYPE_SCROLL_INSENSITIVE,
+              ResultSet.CONCUR_READ_ONLY,
+              ResultSet.CLOSE_CURSORS_AT_COMMIT);
+    }
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareStatement_String_Int_Int_Int */
+
+  @Test
+  public void testPrepareStatement_String_AInt()
+  {
+    enter();
+    try { _connAltibase.prepareStatement(_sSQL, new int[] {1,2}); }
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareStatement_String_AInt */
+
+  @Test
+  public void testPrepareCall_String_Int_Int_Int()
+  {
+    enter();
+    try
+    {
+      _connAltibase.prepareCall(_sSQL,
+              ResultSet.TYPE_SCROLL_INSENSITIVE,
+              ResultSet.CONCUR_READ_ONLY,
+              ResultSet.CLOSE_CURSORS_AT_COMMIT);
+    }
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
+    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+  } /* testPrepareCall_String_Int_Int_Int */
 } /* class AltibaseConnectionTester */
