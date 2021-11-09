@@ -179,20 +179,6 @@ public class TestAltibaseDatabase
     conn.commit();
   } /* dropUser */
 
-  public static void revokeSchemaUser(Connection conn, String sSchema,
-                                      String sUser) throws SQLException
-  {
-    StringBuilder sb = new StringBuilder("REVOKE ALL ON ");
-    sb.append(SqlLiterals.formatId(sSchema));
-    sb.append(".* FROM ");
-    sb.append(SqlLiterals.formatStringLiteral(sUser));
-    sb.append("@");
-    sb.append(SqlLiterals.formatStringLiteral("%"));
-    Statement stmt = conn.createStatement();
-    stmt.unwrap(Statement.class).executeUpdate(sb.toString());
-    conn.commit();
-  } /* revokeSchemaUser */
-
   public TestAltibaseDatabase(AltibaseConnection connAltibase)
           throws SQLException
   {

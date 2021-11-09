@@ -19,6 +19,7 @@ import ch.enterag.sqlparser.identifier.*;
 
 public class TestSqlDatabase
 {
+  public static final String _sTEST_SCHEMA = "TESTSQLSCHEMA";
   private static final String _sTEST_TABLE_SIMPLE = "TSQLSIMPLE";
   public static QualifiedId getQualifiedSimpleTable() { return new QualifiedId(null, null,_sTEST_TABLE_SIMPLE); }
   /** MySQL does not really have any complex (DISTINCT, UDT, ARRAY) types,
