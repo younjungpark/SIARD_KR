@@ -191,27 +191,12 @@ public class AltibaseResultSet
 		return iv.toDuration();
 	} /* getDuration */
 
-	private void setNoBackslashEscapes(boolean bNoBackslashEscapes)
-			throws SQLException
-	{
-		String sSql = "ANSI";
-		if (bNoBackslashEscapes)
-			sSql = sSql + ",NO_BACKSLASH_ESCAPES";
-		sSql = "SET SESSION sql_mode = '"+sSql+"';";
-		Connection connNative = _conn.unwrap(Connection.class);
-		Statement stmt = connNative.createStatement();
-		stmt.executeUpdate(sSql);
-		stmt.close();
-	} /* setNoBackSlashEscapes */
-
 	/* ------------------------------------------------------------------------ */
 	/** {@inheritDoc} */
 	@Override
 	public void insertRow() throws SQLException
 	{
-		setNoBackslashEscapes(false);
 		super.insertRow();
-		setNoBackslashEscapes(true);
 	} /* insertRow */
 
 	/* ------------------------------------------------------------------------ */
@@ -219,9 +204,7 @@ public class AltibaseResultSet
 	@Override
 	public void updateRow() throws SQLException
 	{
-		setNoBackslashEscapes(false);
 		super.updateRow();
-		setNoBackslashEscapes(true);
 	} /* updateRow */
 
 	/* ------------------------------------------------------------------------ */

@@ -35,6 +35,8 @@ public class AltibasePredefinedType extends PredefinedType
 		mapISO_TO_ALTIBASE.put(PreType.NVARCHAR, "NVARCHAR");
 		mapISO_TO_ALTIBASE.put(PreType.CLOB, "CLOB");
 		mapISO_TO_ALTIBASE.put(PreType.BLOB, "BLOB");
+		mapISO_TO_ALTIBASE.put(PreType.XML, "CLOB");
+		mapISO_TO_ALTIBASE.put(PreType.NCLOB, "NVARCHAR(10666)");
 		mapISO_TO_ALTIBASE.put(PreType.NUMERIC, "NUMERIC");
 		mapISO_TO_ALTIBASE.put(PreType.DECIMAL, "DECIMAL");
 		mapISO_TO_ALTIBASE.put(PreType.SMALLINT, "SMALLINT");
@@ -56,25 +58,6 @@ public class AltibasePredefinedType extends PredefinedType
 	public AltibasePredefinedType(SqlFactory sf) {
 		super(sf);
 	} /* constructor */
-
-	/*------------------------------------------------------------------*/
-	/** decimals of seconds in parentheses.
-	 * @param iDefaultDecimals default decimals.
-	 * @return seconds decimals in parentheses.
-	 */
-	protected String formatSecondsDecimals(int iDefaultDecimals)
-	{
-		String sSecondsDecimals = "";
-		int iSecondsDecimals = getSecondsDecimals();
-		if (iSecondsDecimals != iUNDEFINED)
-		{
-			if (iSecondsDecimals > 6)
-				iSecondsDecimals = 6; // maximum precision for DATETIME
-			if (iSecondsDecimals != iDefaultDecimals)
-				sSecondsDecimals = sSecondsDecimals + sLEFT_PAREN + String.valueOf(iSecondsDecimals) + sRIGHT_PAREN;
-		}
-		return sSecondsDecimals;
-	} /* formatSecondsDecimals */
 
 	/**
 	 * format the predefined data type.
@@ -105,10 +88,6 @@ public class AltibasePredefinedType extends PredefinedType
 		{
 			sType = sType + formatLength(); // (M)
 		}
-		else if (getType() == PreType.TIME ||
-				getType() == PreType.TIMESTAMP ||
-				getType() == PreType.DATE)
-			sType = sType + formatSecondsDecimals(iTIME_DECIMALS_DEFAULT); // [(M)]
 
 		return sType;
 	} /* format */
