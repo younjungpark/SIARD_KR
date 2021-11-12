@@ -40,11 +40,13 @@ public class TestSqlDatabase
     List<TestColumnDefinition> listCdSimple = new ArrayList<TestColumnDefinition>();
     listCdSimple.add(new TestColumnDefinition("CCHAR_5","CHAR(5)","Abcd"));
     listCdSimple.add(new TestColumnDefinition("CVARCHAR_255","VARCHAR(255)",TestUtils.getString(196)));
-    listCdSimple.add(new TestColumnDefinition("CCLOB","CLOB()",TestUtils.getString(2000000)));
+    listCdSimple.add(new TestColumnDefinition("CCLOB_2M","CLOB(2M)",TestUtils.getString(2000000)));
     listCdSimple.add(new TestColumnDefinition("CNCHAR_5","NCHAR(5)","Niño"));
-    listCdSimple.add(new TestColumnDefinition("CNVARCHAR_127","NCHAR(127)",TestUtils.getNString(100)));
-    listCdSimple.add(new TestColumnDefinition("CBYTE_5","BINARY(5)",new byte[] {1,-2,3,-4} ));
-    listCdSimple.add(new TestColumnDefinition("CVARBYTE_255","VARBINARY(255)",TestUtils.getBytes(196) ));
+    listCdSimple.add(new TestColumnDefinition("CNVARCHAR_127","NCHAR VARYING(127)",TestUtils.getNString(100)));
+    listCdSimple.add(new TestColumnDefinition("CNCLOB_1M","NCLOB(1M)",TestUtils.getNString(1000000)));
+    listCdSimple.add(new TestColumnDefinition("CXML","XML","<a>foöäpwkfèégopàèwerkgvoperkv &lt; and &amp; ifjeifj</a>"));
+    listCdSimple.add(new TestColumnDefinition("CBINARY_5","BINARY(5)",new byte[] {1,-2,3,-4} ));
+    listCdSimple.add(new TestColumnDefinition("CVARBINARY_255","VARBINARY(255)",TestUtils.getBytes(196) ));
     listCdSimple.add(new TestColumnDefinition("CBLOB","BLOB",TestUtils.getBytes(1000000)));
     listCdSimple.add(new TestColumnDefinition("CNUMERIC_31","NUMERIC(31)",BigInteger.valueOf(1234567890123456789l)));
     listCdSimple.add(new TestColumnDefinition("CDECIMAL_15_5","DECIMAL(15,5)",new BigDecimal(BigInteger.valueOf(3141592653210l),5)));
@@ -55,8 +57,12 @@ public class TestSqlDatabase
     listCdSimple.add(new TestColumnDefinition("CFLOAT_10","FLOAT(10)",new Float(Math.E)));
     listCdSimple.add(new TestColumnDefinition("CREAL","REAL",new Float(Math.PI)));
     listCdSimple.add(new TestColumnDefinition("CDOUBLE","DOUBLE PRECISION",new Double(Math.E)));
-    listCdSimple.add(new TestColumnDefinition("CBOOLEAN","CHAR(1)","1"));
+    listCdSimple.add(new TestColumnDefinition("CBOOLEAN","BOOLEAN",new Boolean(true)));
     listCdSimple.add(new TestColumnDefinition("CDATE","DATE",new Date(2016-1900,11,28)));
+    listCdSimple.add(new TestColumnDefinition("CTIME","TIME",new Time(13,45,28)));
+    listCdSimple.add(new TestColumnDefinition("CTIMESTAMP","TIMESTAMP(9)",new Timestamp(2016-1900,11,28,13,45,28,123456789)));
+    listCdSimple.add(new TestColumnDefinition("CINTERVAL_YEAR_3_MONTH","INTERVAL YEAR(2) TO MONTH",new Interval(1,123,3)));
+    listCdSimple.add(new TestColumnDefinition("CINTERVAL_DAY_2_SECONDS_6","INTERVAL DAY(2) TO SECOND(6)",new Interval(1,4,17,54,23,123456000l)));
     return listCdSimple;
   }
   public static List<TestColumnDefinition> _listCdSimple = getListCdSimple();

@@ -16,31 +16,33 @@ import ch.enterag.sqlparser.expression.*;
 import ch.admin.bar.siard2.altibase.*;
 
 /*====================================================================*/
-/** AltibaseUnsignedLiteral implements the value translation from ISO SQL:2008
- * to Altibase
- * @author Simon Jutz
- */
-public class AltibaseUnsignedLiteral
-        extends UnsignedLiteral
-{
-    @Override
-    public String format()
-    {
-        String sFormatted = "";
-        if (getBytes() != null) {
-            sFormatted = AltibaseLiterals.formatBytesLiteral(getBytes());
-        } else if (getBoolean() != null) {
-            sFormatted = AltibaseLiterals.formatBooleanLiteral(getBoolean());
-        }  else if (getTime() != null) {
-            sFormatted = AltibaseLiterals.formatTimeLiteral(getTime());
-        } else {
-            sFormatted = super.format();
-        }
-        return sFormatted;
-    } /* format */
 
-    public AltibaseUnsignedLiteral(SqlFactory sf) {
-        super(sf);
-    } /* constructor */
+/**
+ * AltibaseUnsignedLiteral implements the value translation from ISO SQL:2008
+ * to Altibase
+ *
+ * @author YounJung Park
+ */
+public class AltibaseUnsignedLiteral extends UnsignedLiteral {
+	@Override
+	public String format() {
+		String sFormatted = "";
+		if (getBytes() != null) {
+			sFormatted = AltibaseLiterals.formatBytesLiteral(getBytes());
+		} else if (getBoolean() != null) {
+			sFormatted = AltibaseLiterals.formatBooleanLiteral(getBoolean());
+		} else if (getTime() != null) {
+			sFormatted = AltibaseLiterals.formatTimeLiteral(getTime());
+		} else if (getTimestamp() != null) {
+			sFormatted = AltibaseLiterals.formatTimestampWithMicroSecLiteral(getTimestamp());
+		} else {
+			sFormatted = super.format();
+		}
+		return sFormatted;
+	} /* format */
+
+	public AltibaseUnsignedLiteral(SqlFactory sf) {
+		super(sf);
+	} /* constructor */
 
 } /* class AltibaseUnsignedLiteral */
