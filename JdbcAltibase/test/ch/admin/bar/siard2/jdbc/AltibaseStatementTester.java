@@ -75,12 +75,6 @@ public class AltibaseStatementTester extends BaseStatementTester
 			// change date format to yyyy-MM-dd
 			TestAltibaseDatabase.changeDateFormat(connAltibase);
 
-			// drop and create the test user
-			TestAltibaseDatabase.dropUser(connAltibase, _sDB_USER);
-			TestAltibaseDatabase.createUser(connAltibase, _sDB_USER, _sDB_PASSWORD);
-
-			TestAltibaseDatabase.grantSchemaUser(connAltibase, _sDB_USER);
-
 			new TestSqlDatabase(connAltibase);
 			new TestAltibaseDatabase(connAltibase);
 

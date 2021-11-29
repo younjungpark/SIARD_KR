@@ -38,12 +38,7 @@ public class AltibaseConnectionTester extends BaseConnectionTester
       // change date format to yyyy-MM-dd
       TestAltibaseDatabase.changeDateFormat(connAltibase);
 
-      // drop and create the test user
-      TestAltibaseDatabase.dropUser(connAltibase, _sDB_USER);
-      TestAltibaseDatabase.createUser(connAltibase, _sDB_USER, _sDB_PASSWORD);
-
       new TestAltibaseDatabase(connAltibase);
-      TestAltibaseDatabase.grantSchemaUser(connAltibase, _sDB_USER);
       new TestSqlDatabase(connAltibase);
       connAltibase.close();
     }

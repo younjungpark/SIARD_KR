@@ -7,7 +7,10 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
 	AltibaseDriverTester.class,
-	AltibaseConnectionTester.class
+	AltibaseConnectionTester.class,
+	AltibaseDatabaseMetaDataTester.class,
+	AltibaseStatementTester.class,
+	AltibaseResultSetTester.class
 })
 public class _AltibaseJdbcTestSuite {
 

@@ -49,7 +49,7 @@ public class AltibasePredefinedType extends PredefinedType
 		mapISO_TO_ALTIBASE.put(PreType.DATE, "DATE");
 		mapISO_TO_ALTIBASE.put(PreType.TIME, "DATE");
 		mapISO_TO_ALTIBASE.put(PreType.TIMESTAMP, "DATE");
-		mapISO_TO_ALTIBASE.put(PreType.INTERVAL, "DATE");
+		mapISO_TO_ALTIBASE.put(PreType.INTERVAL, "VARBYTE(255)");
 	}
 	/**
 	 * Constructor

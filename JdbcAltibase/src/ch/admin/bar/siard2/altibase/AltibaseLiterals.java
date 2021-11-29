@@ -1,6 +1,8 @@
 package ch.admin.bar.siard2.altibase;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+
 import ch.enterag.utils.*;
 import ch.enterag.sqlparser.*;
 import ch.enterag.sqlparser.expression.enums.*;
@@ -8,6 +10,7 @@ import ch.enterag.sqlparser.expression.enums.*;
 public abstract class AltibaseLiterals
         extends SqlLiterals
 {
+    public static final SimpleDateFormat sdfTIMESTAMPWITHMICROSEC = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
     /*------------------------------------------------------------------*/
     /** format byte buffer value.
      * @param bufValue byte buffer value to be formatted.
@@ -86,6 +89,23 @@ public abstract class AltibaseLiterals
         {
             sFormatted = sdfTIMESTAMPWITHMICROSEC.format(tsValue);
             sFormatted = "TO_DATE(" + formatStringLiteral(sFormatted) + ",'YYYY-MM-DD HH24:MI:SS.SSSSSS') ";
+        }
+        return sFormatted;
+    }
+
+    /* ------------------------------------------------------------------------ */
+
+    /**
+     * format interval value
+     * @param intervalValue the interval value to be formatted
+     * @return byte string literal
+     */
+    public static String formatIntervalLiteral(Interval intervalValue)
+    {
+        String sFormatted = sNULL;
+        if(intervalValue != null)
+        {
+            sFormatted = formatBytesLiteral(serialize(intervalValue));
         }
         return sFormatted;
     }
