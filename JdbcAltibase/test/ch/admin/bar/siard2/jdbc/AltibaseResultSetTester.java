@@ -60,7 +60,7 @@ public class AltibaseResultSetTester extends BaseResultSetTester
     listCdSimple.add(new TestColumnDefinition("CCLOB_2M","CLOB(2M)",TestUtils.getString(1000000)));
     listCdSimple.add(new TestColumnDefinition("CNCHAR_5","NCHAR(5)","Auää"));
     listCdSimple.add(new TestColumnDefinition("CNVARCHAR_127","NCHAR VARYING(127)",TestUtils.getNString(53)));
-    listCdSimple.add(new TestColumnDefinition("CNCLOB_1M","NCLOB(1M)",TestUtils.getNString(500000)));
+    listCdSimple.add(new TestColumnDefinition("CNCLOB_255","NCLOB(255)",TestUtils.getNString(255)));
     listCdSimple.add(new TestColumnDefinition("CXML","XML","<a>foöäpwkfèégopàèwerkgv fviodsjv jdsjd idsjidsjsiudojiou operkv &lt; and &amp; ifjeifj</a>"));
     listCdSimple.add(new TestColumnDefinition("CBINARY_5","BINARY(5)",new byte[] {5,-4,3,-2} ));
     listCdSimple.add(new TestColumnDefinition("CVARBINARY_255","VARBINARY(255)",TestUtils.getBytes(76) ));
@@ -1466,11 +1466,16 @@ public class AltibaseResultSetTester extends BaseResultSetTester
       openResultSet(_sSqlQuerySimple,ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_UPDATABLE);
 
       TestColumnDefinition tcd = findColumnDefinition(
-              _listCdSimple,"CNCLOB_1M");
+              _listCdSimple,"CNCLOB_255");
       Reader rdr = new StringReader((String)tcd.getValue());
       getResultSet().updateNClob(tcd.getName(),rdr);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se)
+    {
+      // Altibase does not support ResultSet.updateNClob();
+      assertTrue(se instanceof SQLFeatureNotSupportedException);
+      // fail(EU.getExceptionMessage(se));
+    }
   } /* testUpdateNClob_Reader */
 
   @Override
@@ -1482,11 +1487,16 @@ public class AltibaseResultSetTester extends BaseResultSetTester
       openResultSet(_sSqlQuerySimple,ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_UPDATABLE);
 
       TestColumnDefinition tcd = findColumnDefinition(
-              _listCdSimple,"CNCLOB_1M");
+              _listCdSimple,"CNCLOB_255");
       Reader rdr = new StringReader((String)tcd.getValue());
       getResultSet().updateNClob(tcd.getName(),rdr,((String)tcd.getValue()).length());
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se)
+    {
+      // Altibase does not support ResultSet.updateNClob();
+      assertTrue(se instanceof SQLFeatureNotSupportedException);
+      // fail(EU.getExceptionMessage(se));
+    }
   } /* testUpdateNClob_Reader_Long */
 
 
@@ -2614,7 +2624,12 @@ public class AltibaseResultSetTester extends BaseResultSetTester
       getResultSet().setFetchDirection(ResultSet.FETCH_UNKNOWN);
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se)
+    {
+      // Altibase throws SQLException instead of SQLFeatureNotSupportedException
+      assertEquals(se.getMessage(), "Unsupported feature: Non-forward direction");
+      //fail(EU.getExceptionMessage(se));
+    }
   } /* testSetFetchDirection */
 
   @Override
