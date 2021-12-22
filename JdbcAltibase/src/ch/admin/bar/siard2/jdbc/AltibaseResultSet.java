@@ -134,6 +134,14 @@ public class AltibaseResultSet
 			try { o = getGeometryFromInputStream(new ByteArrayInputStream((byte[]) o)).toText(); }
 			catch (Exception e) { throw new SQLException("Parsing of Geometry failed!",e); }
 		}
+		else if (sColumnType.equals("DATE"))
+		{
+			if (o instanceof Timestamp)
+			{
+				Date sDate = new Date(((Timestamp)o).getTime());
+				o = (T)sDate;
+			}
+		}
 		if (type.isInstance(o))
 			oMapped = (T) o;
 		else

@@ -52,6 +52,10 @@ public class TestAltibaseDatabase
         {
           sValueLiteral = AltibaseLiterals.formatBytesLiteral((byte[]) _oValue);
         }
+        else if (_sType.equals("BIT"))
+        {
+          sValueLiteral = AltibaseLiterals.formatBitLiteral((String)_oValue);
+        }
         else
           sValueLiteral = super.getValueLiteral();
       }
@@ -89,8 +93,8 @@ public class TestAltibaseDatabase
     listCdSimple.add(new ColumnDefinition("CDOUBLE", "DOUBLE", Double.valueOf(Math.E)));
     listCdSimple.add(new ColumnDefinition("CREAL", "REAL", new Float(Double.valueOf(Math.PI).floatValue())));
 
-    listCdSimple.add(new ColumnDefinition("CBIT", "BIT", '1'));
-    listCdSimple.add(new ColumnDefinition("CBOOL", "CHAR(1)", '0'));
+    listCdSimple.add(new ColumnDefinition("CBIT", "BIT", "1"));
+    listCdSimple.add(new ColumnDefinition("CBOOL", "CHAR(1)", "0"));
 
     // Date and Time Types
     listCdSimple.add(new ColumnDefinition("CDATE", "DATE", new Date(2016 - 1900, 10, 30)));
@@ -107,7 +111,7 @@ public class TestAltibaseDatabase
 
     // NCHAR/NVARCHAR
     listCdSimple.add(new ColumnDefinition("CNCHAR_50", "NCHAR(50)", TestUtils.getString(45)));
-    listCdSimple.add(new ColumnDefinition("CNVARCHAR_16000", "NVARCHAR(16000)", TestUtils.getNString(5000)));
+    listCdSimple.add(new ColumnDefinition("CNVARCHAR_50", "NVARCHAR(50)", TestUtils.getNString(50)));
 
     // BINARY/VARBINARY
     listCdSimple.add(new ColumnDefinition("CBYTE", "BYTE(255)", TestUtils.getBytes(100)));
