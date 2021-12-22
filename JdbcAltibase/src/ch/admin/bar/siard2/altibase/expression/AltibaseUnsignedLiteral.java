@@ -37,6 +37,8 @@ public class AltibaseUnsignedLiteral extends UnsignedLiteral {
 			sFormatted = AltibaseLiterals.formatTimestampWithMicroSecLiteral(getTimestamp());
 		} else if (getInterval() != null) {
 			sFormatted = AltibaseLiterals.formatIntervalLiteral(getInterval());
+		} else if (getBitString() != null) {
+			sFormatted = AltibaseLiterals.formatBitLiteral(getBitString());
 		}
 		else {
 			sFormatted = super.format();

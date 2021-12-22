@@ -24,6 +24,14 @@ public abstract class AltibaseLiterals
         return sFormatted;
     } /* formatBytesLiteral */
 
+    public static String formatBitLiteral(String bitString)
+    {
+        String sFormatted = sNULL;
+        if (bitString != null)
+            sFormatted = "BIT" + sAPOSTROPHE + bitString + sAPOSTROPHE;
+        return sFormatted;
+    }
+
     /*------------------------------------------------------------------*/
     /** format a boolean literal value
      * in Altibase the BOOLEAN data type is realized as a "CHAR(1)" data type
@@ -109,4 +117,6 @@ public abstract class AltibaseLiterals
         }
         return sFormatted;
     }
+
+
 } /* class AltibaseSqlLiteral */
