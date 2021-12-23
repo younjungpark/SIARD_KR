@@ -32,6 +32,9 @@ public class AltibaseMetaColumns extends AltibaseResultSet
 	{
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.BIGINT, PreType.BIGINT);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.BIT, PreType.VARCHAR);
+		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.BYTE, PreType.BINARY);
+		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.VARBYTE, PreType.BINARY);
+		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.BINARY, PreType.BINARY);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.BLOB, PreType.BLOB);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.CLOB, PreType.CLOB);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.CHAR, PreType.CHAR);
@@ -47,9 +50,13 @@ public class AltibaseMetaColumns extends AltibaseResultSet
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.SMALLINT, PreType.SMALLINT);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.TIME, PreType.TIME);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.TIMESTAMP, PreType.TIMESTAMP);
+		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.NUMERIC, PreType.NUMERIC);
+		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.REAL, PreType.REAL);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.STRING, PreType.VARCHAR);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.VARCHAR, PreType.VARCHAR);
 		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.OBJECT, PreType.VARCHAR);
+		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.NCHAR, PreType.NCHAR);
+		mapNAME_ALTIBASE_TO_ISO.put(AltibaseType.NVARCHAR, PreType.NVARCHAR);
 	}
 
 	private static final int iMAX_VARCHAR_LENGTH = 32000;

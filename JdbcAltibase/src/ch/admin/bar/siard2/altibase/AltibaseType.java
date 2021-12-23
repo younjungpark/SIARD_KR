@@ -6,7 +6,10 @@ package ch.admin.bar.siard2.altibase;
  */
 public enum AltibaseType {
 	BIT("bit"),
-	VARBIT("bit varying"),
+	BYTE("byte"),
+	VARBIT("varbit"),
+	VARBYTE("varbyte"),
+	BINARY("BINARY"),
 	SHORT("short"),
 	SMALLINT("smallint"),
 	BIGINT("bigint"),
@@ -27,6 +30,8 @@ public enum AltibaseType {
 	DATETIMELTZ("datetimeltz"),
 	DATETIMETZ("datetimetz"),
 	CHAR("char"),
+	NCHAR("nchar"),
+	NVARCHAR("nvarchar"),
 	STRING("string"),
 	VARCHAR("varchar"),
 	BLOB("blob"),

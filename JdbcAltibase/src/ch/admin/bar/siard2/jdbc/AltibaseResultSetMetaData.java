@@ -39,6 +39,9 @@ public class AltibaseResultSetMetaData extends BaseResultSetMetaData implements 
 		mapCLASS_ALTIBASE_TO_ISO.put(Date.class.getName(), Date.class);
 		mapCLASS_ALTIBASE_TO_ISO.put(Time.class.getName(), Time.class);
 		mapCLASS_ALTIBASE_TO_ISO.put(Timestamp.class.getName(), Timestamp.class);
+		mapCLASS_ALTIBASE_TO_ISO.put(BitSet.class.getName(), BitSet.class);
+		mapCLASS_ALTIBASE_TO_ISO.put(Clob.class.getName(), Clob.class);
+		mapCLASS_ALTIBASE_TO_ISO.put(Blob.class.getName(), Blob.class);
 	}
 
 	/* ------------------------------------------------------------------------ */
