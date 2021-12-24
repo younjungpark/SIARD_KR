@@ -162,6 +162,7 @@ public class AltibaseDatabaseMetaDataTester extends BaseDatabaseMetaDataTester
                         (iDataType == Types.BLOB) ||
                         (iDataType == Types.TIMESTAMP) ||
                         (iDataType == Types.TIME) ||
+                        (iDataType == Types.NVARCHAR) || // Altibas NClob converted into NVARCHAR
                         (sTypeName.startsWith("datetimeoffset")))
                 {
                   assertTrue("Explicit precision too large!",(iPrecision <= lColumnSize));
