@@ -10,7 +10,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	AltibaseConnectionTester.class,
 	AltibaseDatabaseMetaDataTester.class,
 	AltibaseStatementTester.class,
-	AltibaseResultSetTester.class
+	AltibaseResultSetTester.class,
+	AltibaseResultSetMetaDataTester.class
 })
 public class _AltibaseJdbcTestSuite {
 
