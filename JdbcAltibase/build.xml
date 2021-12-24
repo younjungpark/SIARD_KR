@@ -219,7 +219,7 @@ Created    : 16.06.2016, Simon Jutz
 	</target>
 
 	<!-- create and run all tests -->
-	<property name="classdatasourcetester" value="ch.admin.bar.siard2.javax.AltibaseDataSourceTester" />
+	<property name="classdatasourcetester" value="ch.admin.bar.siard2.jdbcx.AltibaseDataSourceTester" />
 	<property name="filedatasourcetest" value="datasource-test" />
 	<property name="classjdbctestsuite" value="ch.admin.bar.siard2.jdbc._AltibaseJdbcTestSuite" />
 	<property name="filejdbctests" value="jdbc-tests" />

@@ -1,4 +1,4 @@
-package ch.admin.bar.siard2.javax;
+package ch.admin.bar.siard2.jdbcx;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import ch.admin.bar.siard2.jdbcx.AltibaseDataSource;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
