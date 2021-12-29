@@ -16,7 +16,7 @@ import ch.enterag.sqlparser.identifier.*;
 
 public class TestAltibaseDatabase
 {
-  public static final String _sTEST_SCHEMA = "SYS";
+  public static final String _sTEST_SCHEMA = "sys";
   private static final String _sTEST_TABLE_SIMPLE = "TALTIBASESIMPLE";
 
   public static QualifiedId getQualifiedSimpleTable()
