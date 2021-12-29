@@ -257,6 +257,8 @@ Created    : 01.06.2017, Hartwig Thomas
 		<!-- TODO: get most recently released version of jdbccubrid.jar -->
 		<copy file="../Cubrid/dist/cubrid.jar" todir="${dirlib}" failonerror="false"/>
 		<copy file="../JdbcCubrid/dist/jdbccubrid.jar" todir="${dirlib}" failonerror="false"/>
+		<!-- TODO: get most recently released version of jdbcaltibase.jar -->
+		<copy file="../JdbcAltibase/dist/jdbcaltibase.jar" todir="${dirlib}" failonerror="false"/>
 		<!-- stage all changes -->
 		<echo message="${ant.project.name}: git add -A" />
 		<exec executable="${git}" output="${fileadd}" failonerror="true">
@@ -341,6 +343,7 @@ Created    : 01.06.2017, Hartwig Thomas
 				<pathelement path="${cpjdbcoracle}" />
 				<pathelement path="${cpjdbcpostgres}" />
 				<pathelement path="${cpjdbccubrid}" />
+				<pathelement path="${cpjdbcaltibase}" />
 				<pathelement path="${cpjdbcmssql}" />
 				<pathelement path="${cpjdbch2}" />
 				<pathelement path="${cpjdbcbase}" />
@@ -388,6 +391,7 @@ Created    : 01.06.2017, Hartwig Thomas
 				<pathelement path="${cpjdbcoracle}" />
 				<pathelement path="${cpjdbcpostgres}" />
 				<pathelement path="${cpjdbccubrid}" />
+				<pathelement path="${cpjdbcaltibase}" />
 				<pathelement path="${cpjdbcmssql}" />
 				<pathelement path="${cpjdbch2}" />
 				<pathelement path="${cpjdbcbase}" />
@@ -415,6 +419,7 @@ Created    : 01.06.2017, Hartwig Thomas
 				<pathelement path="${cpjdbcoracle}" />
 				<pathelement path="${cpjdbcpostgres}" />
 				<pathelement path="${cpjdbccubrid}" />
+				<pathelement path="${cpjdbcaltibase}" />
 				<pathelement path="${cpjdbcmssql}" />
 				<pathelement path="${cpjdbch2}" />
 				<pathelement path="${cpjdbcbase}" />

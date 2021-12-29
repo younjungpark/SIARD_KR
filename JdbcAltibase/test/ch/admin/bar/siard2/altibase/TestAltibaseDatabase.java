@@ -16,6 +16,7 @@ import ch.enterag.sqlparser.identifier.*;
 
 public class TestAltibaseDatabase
 {
+  public static final String _sTEST_SCHEMA = "SYS";
   private static final String _sTEST_TABLE_SIMPLE = "TALTIBASESIMPLE";
 
   public static QualifiedId getQualifiedSimpleTable()
@@ -366,12 +367,24 @@ public class TestAltibaseDatabase
 
   public static void changeDateFormat(Connection conn)
   {
+    Statement stmt = null;
     try
     {
-      Statement stmt = conn.createStatement();
+      stmt = conn.createStatement();
       stmt.execute("alter session set default_date_format = 'yyyy-MM-dd'");
     }
     catch (SQLException se) { System.out.println(EU.getExceptionMessage(se)); }
+    finally
+    {
+      try
+      {
+        stmt.close();
+      }
+      catch (SQLException e)
+      {
+        e.printStackTrace();
+      }
+    }
   }
 
 } /* TestAltibaseDatabase */

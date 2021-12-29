@@ -549,7 +549,42 @@ Created    : 29.08.2016, Hartwig Thomas
     	-->
 	</target>
 
-	<!-- run Oracle tests -->
+	<!-- run Altibase tests -->
+	<property name="classaltibasetestsuite" value="ch.admin.bar.siard2.cmd._AltibaseTestSuite" />
+	<property name="filealtibasetests" value="altibase-tests" />
+	<target name="tests-altibase" depends="tests" if="dbuseraltibase">
+		<echo message="${ant.project.name}: test-altibase run" />
+		<!--
+		<junit haltonerror="true" haltonfailure="true" fork="true" printsummary="on" dir="${basedir}">
+			  <sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
+			  <formatter type="plain"/>
+			  <classpath>
+				<pathelement path="${dirbuildtests}"/>
+				<pathelement path="${dirdist}/${jarfile}"/>
+				<pathelement path="${cpantlr}"/>
+				<pathelement path="${cpenterutils}"/>
+				<pathelement path="${cpsqlparser}"/>
+				<pathelement path="${cpjts}"/>
+				<pathelement path="${cpjdbcbase}"/>
+				<pathelement path="${cpjdbcbase-test}"/>
+				<pathelement path="${cpjdbcaltibase}"/>
+				<pathelement path="${cpjdbcaltibase-test}"/>
+				<pathelement path="${cpjaxb}"/>
+				<pathelement path="${cpzip64}"/>
+				<pathelement path="${cpwoodstox}"/>
+				<pathelement path="${cpmsv}"/>
+				<pathelement path="${cpsiardapi}"/>
+				<pathelement path="${cpjunit}"/>
+				<pathelement path="${cpjsch}" />
+			  </classpath>
+			  <test name="${classaltibasetestsuite}"
+				  outfile="${filealtibasetests}"
+				  todir="${dirtmp}"/>
+		</junit>
+		-->
+</target>
+
+<!-- run Oracle tests -->
 	<property name="classoracletestsuite" value="ch.admin.bar.siard2.cmd._OracleTestSuite" />
 	<property name="fileoracletests" value="oracle-tests" />
 	<target name="tests-oracle" depends="tests" if="dbuseroracle">
