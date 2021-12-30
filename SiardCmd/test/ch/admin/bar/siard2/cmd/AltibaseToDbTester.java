@@ -1,6 +1,5 @@
 package ch.admin.bar.siard2.cmd;
 
-import ch.admin.bar.siard2.altibase.TestAltibaseDatabase;
 import ch.admin.bar.siard2.jdbc.AltibaseConnection;
 import ch.admin.bar.siard2.jdbc.AltibaseDriver;
 import ch.admin.bar.siard2.jdbcx.AltibaseDataSource;
@@ -26,15 +25,15 @@ public class AltibaseToDbTester extends BaseFromDbTester
     private static final String _sALTIBASE_TEST_SCHEMA = "testschema";
     static
     {
-        ConnectionProperties cp = new ConnectionProperties("altibase");
-        _sALTIBASE_DB_URL = AltibaseDriver.getUrl(cp.getHost() + ":" + cp.getPort() + "/" + cp.getCatalog());
+        ConnectionProperties cp = new ConnectionProperties("Altibase");
+        _sALTIBASE_DB_URL = AltibaseDriver.getUrl("//" + cp.getHost() + ":" + cp.getPort() + "/" + cp.getCatalog());
         _sALTIBASE_DB_USER = cp.getUser();
         _sALTIBAES_DB_PASSWORD = cp.getPassword();
         _sALTIBASE_DBA_USER = cp.getDbaUser();
         _sALTIBASE_DBA_PASSWORD = cp.getDbaPassword();
     }
     private static final String _sALTIBASE_SAMPLE_FILE = "testfiles/sample.siard";
-    private static final String _sALTIBASE_SIARD_FILE  = "testfiles/sfdbaltibase.siard";
+    private static final String _sALTIBASE_SIARD_FILE  = "testfiles/sfdbAltibase.siard";
 
     @Test
     public void testAltibaseToAltibase()
@@ -48,9 +47,7 @@ public class AltibaseToDbTester extends BaseFromDbTester
                     "-j:" + _sALTIBASE_DB_URL,
                     "-u:" + _sALTIBASE_DBA_USER,
                     "-p:" + _sALTIBASE_DBA_PASSWORD,
-                    "-s:" + _sALTIBASE_SIARD_FILE,
-                    "pg_catalog", "testschema",
-                    "testpgschema", "testschema"
+                    "-s:" + _sALTIBASE_SIARD_FILE
             };
             SiardToDb stdb = new SiardToDb(args);
             assertEquals("SiardToDb failed!",0, stdb.getReturn());
@@ -97,7 +94,7 @@ public class AltibaseToDbTester extends BaseFromDbTester
                 connAltibase.rollback();
                 fail(sSql + " failed!");
             }
-            TestAltibaseDatabase.grantSchemaUser(connAltibase, _sALTIBASE_DB_USER);
+//          TestAltibaseDatabase.grantSchemaUser(connAltibase, _sALTIBASE_DB_USER);
             connAltibase.close();
             /* now upload sample */
             String[] args = new String[]{

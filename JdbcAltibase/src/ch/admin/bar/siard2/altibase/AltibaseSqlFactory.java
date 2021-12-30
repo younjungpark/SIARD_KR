@@ -61,6 +61,18 @@ public class AltibaseSqlFactory extends BaseSqlFactory implements SqlFactory
 		return new AltibaseDropSchemaStatement(this);
 	} /* newDropSchemaStatement */
 
+	@Override
+	public CreateSchemaStatement newCreateSchemaStatement()
+	{
+		return new AltibaseCreateSchemaStatement(this);
+	}
+
+	@Override
+	public AttributeDefinition newAttributeDefinition()
+	{
+		return new AltibaseAttributeDefinition(this);
+	} /* newAttributeDefinition */
+
 	/* ------------------------------------------------------------------------ */
 	/** Creates a new DROP TABLE statement */
 	@Override

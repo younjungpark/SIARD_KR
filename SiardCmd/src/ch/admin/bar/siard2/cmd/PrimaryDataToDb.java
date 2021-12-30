@@ -148,7 +148,7 @@ public class PrimaryDataToDb extends PrimaryDataTransfer
       TableMapping tm = sm.getTableMapping(mt.getName());
       QualifiedId qiTable = new QualifiedId(null,sm.getMappedSchemaName(),tm.getMappedTableName());
 			String tableName = qiTable.format();
-			if (_dbms.equals("CUBRID"))
+            if ("CUBRID".equals(_dbms))
 			{
 				tableName = tm.getMappedTableName();
 				if (!tableName.contains("\""))
@@ -166,7 +166,7 @@ public class PrimaryDataToDb extends PrimaryDataTransfer
           if (iColumn > 0)
             sbSql.append(",");
           String sMappedColumnName = SqlLiterals.formatId(tm.getMappedColumnName(mck.getColumn(iColumn)));
-          if (_dbms.equals("CUBRID"))
+          if ("CUBRID".equals(_dbms))
 					{
 						if (!sMappedColumnName.contains("\""))
 						{
@@ -200,7 +200,7 @@ public class PrimaryDataToDb extends PrimaryDataTransfer
       QualifiedId qiTable = new QualifiedId(null,sm.getMappedSchemaName(),tm.getMappedTableName());
 			String sSql;
 			String tableName = qiTable.format();
-			if (_dbms.equals("CUBRID"))
+            if ("CUBRID".equals(_dbms))
 			{
 				tableName = tm.getMappedTableName();
 				if (!tableName.contains("\""))
@@ -221,7 +221,7 @@ public class PrimaryDataToDb extends PrimaryDataTransfer
         QualifiedId qiReferenced = new QualifiedId(null,
           smReferenced.getMappedSchemaName(),tmReferenced.getMappedTableName());
 				String rfName = qiReferenced.format();
-				if (_dbms.equals("CUBRID"))
+                if ("CUBRID".equals(_dbms))
 				{
 					rfName = tmReferenced.getMappedTableName();
 					if (!rfName.contains("\""))
@@ -239,7 +239,7 @@ public class PrimaryDataToDb extends PrimaryDataTransfer
           }
 					String fkCol = tm.getMappedColumnName(mfk.getColumn(iReference));
 					String rfCol = tmReferenced.getMappedColumnName(mfk.getReferenced(iReference));
-					if (_dbms.equals("CUBRID"))
+                    if ("CUBRID".equals(_dbms))
 					{
 						if (!fkCol.contains("\""))
 						{
