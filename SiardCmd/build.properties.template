@@ -3,7 +3,7 @@
 # Application : SIARD Suite 2.0
 # Description : user-specific build properties of SiardCmd
 #-----------------------------------------------------------------------
-# Copyright  : 2016, Enter AG, Rüti ZH, Switzerland
+# Copyright  : 2016, Enter AG, Rï¿½ti ZH, Switzerland
 # Created    : 09.05.2015, Hartwig Thomas
 #=======================================================================
 
@@ -136,3 +136,14 @@ dbuseraw=aw
 dbpasswordaw=awpwd
 dbauseraw=sa
 dbapasswordaw=sapwd
+
+# ----------------------------------------------------------------------
+# db connection properties for altibase
+# if dbhostAltibase is undefined, no tests with Altibase databases will be run by build
+dbhostAltibase=vmw10.enterag.ch
+dbportAltibase=20300
+dbcatalogAltibase=mydb
+dbuserAltibase=sys
+dbpasswordAltibase=manager
+dbauserAltibase=sys
+dbapasswordAltibase=manager
