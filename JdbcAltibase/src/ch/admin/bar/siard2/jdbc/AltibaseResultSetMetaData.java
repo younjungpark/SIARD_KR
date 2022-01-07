@@ -68,7 +68,8 @@ public class AltibaseResultSetMetaData extends BaseResultSetMetaData implements 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int getColumnType(int column) throws SQLException {
+	public int getColumnType(int column) throws SQLException
+	{
 		return AltibaseMetaColumns.getDataType(super.getColumnTypeName(column).toLowerCase());
 	} /* getColumnType */
 
@@ -77,7 +78,8 @@ public class AltibaseResultSetMetaData extends BaseResultSetMetaData implements 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getColumnClassName(int column) throws SQLException {
+	public String getColumnClassName(int column) throws SQLException
+	{
 		String sClassName = super.getColumnClassName(column);
 		String sTypeName = super.getColumnTypeName(column);
 		Class<?> cls = mapCLASS_ALTIBASE_TO_ISO.get(sClassName);

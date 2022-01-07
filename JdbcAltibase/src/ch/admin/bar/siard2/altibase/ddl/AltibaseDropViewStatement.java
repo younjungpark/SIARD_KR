@@ -22,8 +22,7 @@ import ch.enterag.sqlparser.ddl.enums.DropBehavior;
  * VIEW statements
  * @author YounJung Park
  */
-public class AltibaseDropViewStatement
-        extends DropViewStatement
+public class AltibaseDropViewStatement extends DropViewStatement
 {
   /*------------------------------------------------------------------*/
   /**
@@ -31,7 +30,8 @@ public class AltibaseDropViewStatement
    * @return the SQL string corresponding to a drop view statement
    */
   @Override
-  public String format() {
+  public String format()
+  {
     String sStatement = null;
     // Altibase does not support RESTRICT, CASCADE in VIEWS
     sStatement = K.DROP.getKeyword() + sSP + K.VIEW.getKeyword() + sSP + getViewName().quote();

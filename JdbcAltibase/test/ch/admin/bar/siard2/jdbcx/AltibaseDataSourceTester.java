@@ -19,8 +19,8 @@ public class AltibaseDataSourceTester {
     private static final ConnectionProperties _cp = new ConnectionProperties();
 
     private static final String _sDB_URL = "jdbc:Altibase://" + _cp.getHost() + ":" + _cp.getPort();
-    private static final String _sDB_USER = _cp.getUser();
-    private static final String _sDB_PASSWORD = _cp.getPassword();
+    private static final String _sDBA_USER = _cp.getDbaUser();
+    private static final String _sDBA_PASSWORD = _cp.getDbaPassword();
 
     private AltibaseDataSource _dsAltibase = null;
     private Connection         _conn       = null;
@@ -53,8 +53,8 @@ public class AltibaseDataSourceTester {
     public void testConnection()
     {
         _dsAltibase.setUrl(_sDB_URL);
-        _dsAltibase.setUser(_sDB_USER);
-        _dsAltibase.setPassword(_sDB_PASSWORD);
+        _dsAltibase.setUser(_sDBA_USER);
+        _dsAltibase.setPassword(_sDBA_PASSWORD);
 
         try {
             _conn = _dsAltibase.getConnection();

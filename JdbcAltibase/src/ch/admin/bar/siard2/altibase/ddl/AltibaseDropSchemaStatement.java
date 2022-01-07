@@ -23,8 +23,7 @@ import ch.enterag.sqlparser.ddl.enums.*;
  * Also we need to quote all identifiers rather than formatting them.
  * @author YounJung Park
  */
-public class AltibaseDropSchemaStatement
-		extends DropSchemaStatement
+public class AltibaseDropSchemaStatement extends DropSchemaStatement
 {
 	/*------------------------------------------------------------------*/
 	/** format the drop schema statement for Altibase as a drop user statement.

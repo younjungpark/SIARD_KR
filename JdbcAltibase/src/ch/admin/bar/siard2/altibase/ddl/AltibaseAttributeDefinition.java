@@ -16,7 +16,8 @@ import ch.enterag.sqlparser.ddl.AttributeDefinition;
 
 /*====================================================================*/
 public class AltibaseAttributeDefinition
-		extends AttributeDefinition {
+		extends AttributeDefinition
+{
 
 	/*------------------------------------------------------------------*/
 	/**
@@ -24,12 +25,14 @@ public class AltibaseAttributeDefinition
 	 * @return the SQL string corresponding to a attribute definition
 	 */
 	@Override
-	public String format() {
+	public String format()
+	{
 		String sDefinition = getAttributeName().quote() + sSP + getDataType().format();
 		return sDefinition;
 	}
 
-	public AltibaseAttributeDefinition(SqlFactory sf) {
+	public AltibaseAttributeDefinition(SqlFactory sf)
+	{
 		super(sf);
 	} /* constructor */
 }

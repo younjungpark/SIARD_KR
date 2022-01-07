@@ -182,7 +182,7 @@ public class TestAltibaseDatabase
     stmt.unwrap(Statement.class).executeUpdate(sb.toString());
     stmt.close();
     conn.commit();
-  } /* dropUser */
+  } /* createUser */
 
   public TestAltibaseDatabase(AltibaseConnection connAltibase)
           throws SQLException

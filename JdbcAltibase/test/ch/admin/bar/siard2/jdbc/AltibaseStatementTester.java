@@ -13,7 +13,7 @@ import ch.admin.bar.siard2.altibase.*;
 public class AltibaseStatementTester extends BaseStatementTester
 {
 	private static final ConnectionProperties _cp = new ConnectionProperties();
-	private static final String _sDB_URL = AltibaseDriver.getUrl(_cp.getHost() + ":" + _cp.getPort()+"/"+_cp.getCatalog());
+	private static final String _sDB_URL = AltibaseDriver.getUrl("//" + _cp.getHost() + ":" + _cp.getPort()+"/"+_cp.getCatalog()+"?date_format=yyyy-MM-dd");
 	private static final String _sDB_USER = _cp.getUser();
 	private static final String _sDB_PASSWORD = _cp.getPassword();
 	private static final String _sDBA_USER = _cp.getDbaUser();
@@ -67,21 +67,46 @@ public class AltibaseStatementTester extends BaseStatementTester
 	{
 		try
 		{
+			dropUser();
 			AltibaseDataSource dsAltibase = new AltibaseDataSource();
 			dsAltibase.setUrl(_sDB_URL);
 			dsAltibase.setUser(_sDBA_USER);
 			dsAltibase.setPassword(_sDBA_PASSWORD);
 			AltibaseConnection connAltibase = (AltibaseConnection) dsAltibase.getConnection();
-			// change date format to yyyy-MM-dd
-			TestAltibaseDatabase.changeDateFormat(connAltibase);
+			TestAltibaseDatabase.createUser(connAltibase, _sDB_USER, _sDB_PASSWORD);
+			connAltibase.close();
 
-			new TestSqlDatabase(connAltibase);
+			dsAltibase.setUrl(_sDB_URL);
+			dsAltibase.setUser(_sDB_USER);
+			dsAltibase.setPassword(_sDB_PASSWORD);
+			connAltibase = (AltibaseConnection) dsAltibase.getConnection();
+
 			new TestAltibaseDatabase(connAltibase);
-
+			new TestSqlDatabase(connAltibase);
 			connAltibase.close();
 		}
 		catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
 	} /* setUpClass */
+
+	@AfterClass
+	public static void tearDownClass()
+	{
+		dropUser();
+	} /* AfterClass */
+
+	private static void dropUser()
+	{
+		try
+		{
+			AltibaseDataSource dsAltibase = new AltibaseDataSource();
+			dsAltibase.setUrl(_sDB_URL);
+			dsAltibase.setUser(_sDBA_USER);
+			dsAltibase.setPassword(_sDBA_PASSWORD);
+			AltibaseConnection connAltibase = (AltibaseConnection)dsAltibase.getConnection();
+			TestAltibaseDatabase.dropUser(connAltibase, _sDB_USER);
+		}
+		catch(SQLException se) { /* ignore */ }
+	}
 
 	@Before
 	public void setUp()
@@ -303,7 +328,7 @@ public class AltibaseStatementTester extends BaseStatementTester
 		enter();
 		try
 		{
-			_stmtAltibase.executeUpdate("DROP TABLE sys."+TestSqlDatabase.getQualifiedSimpleTable().format()+" CASCADE");
+			_stmtAltibase.executeUpdate("DROP TABLE "+TestSqlDatabase.getQualifiedSimpleTable().format()+" CASCADE");
 			// restore the database
 			tearDown();
 			setUpClass();

@@ -150,7 +150,8 @@ public class AltibaseResultSet
 	} /* getObject */
 
 	/* ------------------------------------------------------------------------ */
-	private <T> T mapObject(Object o, int iType, Class<T> type) throws SQLException {
+	private <T> T mapObject(Object o, int iType, Class<T> type) throws SQLException
+	{
 		T oMapped = null;
 		oMapped = type.cast(mapObject(o, iType));
 		return oMapped;
@@ -222,7 +223,8 @@ public class AltibaseResultSet
 	 * https://github.com/mysql/mysql-connector-j/blob/release/5.1/src/com/mysql/jdbc/JDBC4ResultSet.java
 	 */
 	@Override
-	public void updateSQLXML(int columnIndex, SQLXML xml) throws SQLException {
+	public void updateSQLXML(int columnIndex, SQLXML xml) throws SQLException
+	{
 		String sXML = xml.getString();
 		xml.free();
 		/*
@@ -231,17 +233,25 @@ public class AltibaseResultSet
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;
 		Document doc = null;
-		try {
+		try
+		{
 			dBuilder = dbFactory.newDocumentBuilder();
 			doc = dBuilder.parse(new InputSource(new ByteArrayInputStream(sXML.getBytes(SU.sUTF8_CHARSET_NAME))));
-		} catch (ParserConfigurationException e) {
-			throw new SQLException(e);
-		} catch (SAXException e) {
-			throw new SQLException(e);
-		} catch (IOException e) {
+		}
+		catch (ParserConfigurationException e)
+		{
 			throw new SQLException(e);
 		}
-		if(doc != null) {
+		catch (SAXException e)
+		{
+			throw new SQLException(e);
+		}
+		catch (IOException e)
+		{
+			throw new SQLException(e);
+		}
+		if(doc != null)
+		{
 			updateString(columnIndex, sXML);
 		}
 	} /* updateSQLXML */
@@ -277,13 +287,16 @@ public class AltibaseResultSet
 	 * @return a Geometry Object
 	 * @throws Exception if the bytes in the input stream could not be parsed
 	 */
-	private Geometry getGeometryFromInputStream(InputStream inputStream) throws Exception {
+	private Geometry getGeometryFromInputStream(InputStream inputStream) throws Exception
+	{
 		Geometry geometry = null;
-		if (inputStream != null) {
+		if (inputStream != null)
+		{
 			byte[] buffer = new byte[255];
 			int bytesRead = 0;
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			while ((bytesRead = inputStream.read(buffer)) != -1) {
+			while ((bytesRead = inputStream.read(buffer)) != -1)
+			{
 				baos.write(buffer, 0, bytesRead);
 			}
 			byte[] geometryAsBytes = baos.toByteArray();
@@ -294,12 +307,17 @@ public class AltibaseResultSet
 			boolean bigEndian = (geometryAsBytes[4] == 0x00);
 
 			int srid = 0;
-			if (bigEndian) {
-				for (int i = 0; i < sridBytes.length; i++) {
+			if (bigEndian)
+			{
+				for (int i = 0; i < sridBytes.length; i++)
+				{
 					srid = (srid << 8) + (sridBytes[i] & 0xff);
 				}
-			} else {
-				for (int i = 0; i < sridBytes.length; i++) {
+			}
+			else
+			{
+				for (int i = 0; i < sridBytes.length; i++)
+				{
 					srid += (sridBytes[i] & 0xff) << (8 * i);
 				}
 			}
@@ -319,15 +337,20 @@ public class AltibaseResultSet
 	 * @param inputStream the input stream to read
 	 * @return a byte array consisting of the same bytes as the input stream
 	 */
-	private byte[] readByteArray(InputStream inputStream) {
+	private byte[] readByteArray(InputStream inputStream)
+	{
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		byte[] buf = new byte[0xFFFF];
-		try {
-			for(int len; (len = inputStream.read(buf)) != -1; ) {
+		try
+		{
+			for(int len; (len = inputStream.read(buf)) != -1; )
+			{
 				os.write(buf, 0, len);
 			}
 			os.flush();
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 		return os.toByteArray();
@@ -338,17 +361,22 @@ public class AltibaseResultSet
 	 * @param reader
 	 * @return the string read
 	 */
-	private String readString(Reader reader) {
+	private String readString(Reader reader)
+	{
 		StringBuilder builder = new StringBuilder();
-		try {
+		try
+		{
 			int c = -1;
 			char[] chars = new char[0xFFFF];
-			do {
+			do
+			{
 				c = reader.read(chars, 0, chars.length);
-				if (c>0) {
+				if (c>0)
+				{
 					builder.append(chars, 0, c);
 				}
-			} while(c>0);
+			}
+			while(c > 0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

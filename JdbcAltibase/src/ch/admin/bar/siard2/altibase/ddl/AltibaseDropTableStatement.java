@@ -21,15 +21,16 @@ import ch.enterag.sqlparser.ddl.enums.DropBehavior;
  * TABLE statements
  * @author YounJung Park
  */
-public class AltibaseDropTableStatement
-		extends DropTableStatement {
+public class AltibaseDropTableStatement	extends DropTableStatement
+{
 	/*------------------------------------------------------------------*/
 	/**
 	 * format the drop schema statement
 	 * @return the SQL string corresponding to a drop schema statement
 	 */
 	@Override
-	public String format() {
+	public String format()
+	{
 		String sStatement = null;
 
 		sStatement = K.DROP.getKeyword() + sSP + K.TABLE.getKeyword() + sSP + getTableName().quote();

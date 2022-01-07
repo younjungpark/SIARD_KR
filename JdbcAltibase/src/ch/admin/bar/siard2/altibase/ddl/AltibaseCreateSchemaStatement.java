@@ -19,9 +19,8 @@ import ch.enterag.sqlparser.ddl.*;
  * SCHEMA statements
  * @author YounJung Park
  */
-public class AltibaseCreateSchemaStatement
-		extends CreateSchemaStatement {
-
+public class AltibaseCreateSchemaStatement extends CreateSchemaStatement
+{
 	private static final String _sSCHEMA_PASSWORD = "MANAGER";
 	public static String getSchemaPassword() { return _sSCHEMA_PASSWORD; };
 	private static final String _sDEFAULT_PERMANENT_TABLESPACE = "USERS";
@@ -33,7 +32,8 @@ public class AltibaseCreateSchemaStatement
 	 * @return the SQL string corresponding to a create schema statement
 	 */
 	@Override
-	public String format() {
+	public String format()
+	{
 		String sStatement = null;
 		sStatement = K.CREATE.getKeyword() + sSP + K.USER.getKeyword() +
 				sSP + SqlLiterals.quoteId(getSchemaName().getSchema()) +

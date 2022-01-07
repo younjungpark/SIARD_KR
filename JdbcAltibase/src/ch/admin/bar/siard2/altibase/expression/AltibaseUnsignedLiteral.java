@@ -23,24 +23,38 @@ import ch.admin.bar.siard2.altibase.*;
  *
  * @author YounJung Park
  */
-public class AltibaseUnsignedLiteral extends UnsignedLiteral {
+public class AltibaseUnsignedLiteral extends UnsignedLiteral
+{
 	@Override
-	public String format() {
+	public String format()
+	{
 		String sFormatted = "";
-		if (getBytes() != null) {
+		if (getBytes() != null)
+		{
 			sFormatted = AltibaseLiterals.formatBytesLiteral(getBytes());
-		} else if (getBoolean() != null) {
+		}
+		else if (getBoolean() != null)
+		{
 			sFormatted = AltibaseLiterals.formatBooleanLiteral(getBoolean());
-		} else if (getTime() != null) {
+		}
+		else if (getTime() != null)
+		{
 			sFormatted = AltibaseLiterals.formatTimeLiteral(getTime());
-		} else if (getTimestamp() != null) {
+		}
+		else if (getTimestamp() != null)
+		{
 			sFormatted = AltibaseLiterals.formatTimestampWithMicroSecLiteral(getTimestamp());
-		} else if (getInterval() != null) {
+		}
+		else if (getInterval() != null)
+		{
 			sFormatted = AltibaseLiterals.formatIntervalLiteral(getInterval());
-		} else if (getBitString() != null) {
+		}
+		else if (getBitString() != null)
+		{
 			sFormatted = AltibaseLiterals.formatBitLiteral(getBitString());
 		}
-		else {
+		else
+		{
 			sFormatted = super.format();
 		}
 		return sFormatted;

@@ -21,7 +21,8 @@ import ch.admin.bar.siard2.altibase.*;
 /** AltibaseConnection implements a wrapped Altibase Connection.
  * @author YounJung Park
  */
-public class AltibaseConnection extends BaseConnection implements Connection {
+public class AltibaseConnection extends BaseConnection implements Connection
+{
 	// logger
 	private static IndentLogger _il = IndentLogger.getIndentLogger(AltibaseConnection.class.getName());
 

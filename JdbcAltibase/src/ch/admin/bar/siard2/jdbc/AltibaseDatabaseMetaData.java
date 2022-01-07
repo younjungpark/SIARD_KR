@@ -20,7 +20,8 @@ import ch.enterag.sqlparser.*;
  * AltibaseDatabaseMetaData implements a wrapped Altibase DatabaseMetaData
  * @author YounJung Park
  */
-public class AltibaseDatabaseMetaData extends BaseDatabaseMetaData implements DatabaseMetaData {
+public class AltibaseDatabaseMetaData extends BaseDatabaseMetaData implements DatabaseMetaData
+{
 	private AltibaseConnection _conn = null;
 	/**
 	 * Constructor

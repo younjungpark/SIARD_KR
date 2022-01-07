@@ -4,7 +4,8 @@ package ch.admin.bar.siard2.altibase;
  * Contains all built-in Altibase Types
  * @author YounJung Park
  */
-public enum AltibaseType {
+public enum AltibaseType
+{
 	BIT("bit"),
 	BYTE("byte"),
 	VARBIT("varbit"),
@@ -58,11 +59,14 @@ public enum AltibaseType {
 	 * @param _sTypeName the type name
 	 * @return enum constant with the given type name
 	 */
-	public static AltibaseType getByTypeName(String _sTypeName) {
+	public static AltibaseType getByTypeName(String _sTypeName)
+	{
 		AltibaseType result = null;
-		for(int i=0;i<AltibaseType.values().length;i++) {
+		for(int i = 0; i < AltibaseType.values().length; i++)
+		{
 			AltibaseType t = AltibaseType.values()[i];
-			if(t.getTypeName().equalsIgnoreCase(_sTypeName)) {
+			if(t.getTypeName().equalsIgnoreCase(_sTypeName))
+			{
 				result = t;
 				break;
 			}
