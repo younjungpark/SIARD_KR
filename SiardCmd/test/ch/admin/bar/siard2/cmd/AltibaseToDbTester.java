@@ -22,11 +22,11 @@ public class AltibaseToDbTester extends BaseFromDbTester
     private static final String _sALTIBAES_DB_PASSWORD;
     private static final String _sALTIBASE_DBA_USER;
     private static final String _sALTIBASE_DBA_PASSWORD;
-    private static final String _sALTIBASE_TEST_SCHEMA = "testschema";
+    private static final String _sALTIBASE_TEST_SCHEMA = "TESTSCHEMA";
     static
     {
         ConnectionProperties cp = new ConnectionProperties("Altibase");
-        _sALTIBASE_DB_URL = AltibaseDriver.getUrl("//" + cp.getHost() + ":" + cp.getPort() + "/" + cp.getCatalog());
+        _sALTIBASE_DB_URL = AltibaseDriver.getUrl("//" + cp.getHost() + ":" + cp.getPort()+"/"+cp.getCatalog()+"?date_format=yyyy-MM-dd");
         _sALTIBASE_DB_USER = cp.getUser();
         _sALTIBAES_DB_PASSWORD = cp.getPassword();
         _sALTIBASE_DBA_USER = cp.getDbaUser();
@@ -86,7 +86,6 @@ public class AltibaseToDbTester extends BaseFromDbTester
             Statement stmt = connAltibase.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             String sSql = "CREATE SCHEMA " + _sALTIBASE_TEST_SCHEMA + " AUTHORIZATION " + _sALTIBASE_DB_USER;
             int iResult = stmt.executeUpdate(sSql);
-            stmt.close();
             if (iResult == 0)
                 connAltibase.commit();
             else
@@ -94,17 +93,19 @@ public class AltibaseToDbTester extends BaseFromDbTester
                 connAltibase.rollback();
                 fail(sSql + " failed!");
             }
-//          TestAltibaseDatabase.grantSchemaUser(connAltibase, _sALTIBASE_DB_USER);
+            sSql = "GRANT ALL PRIVILEGES TO " + _sALTIBASE_TEST_SCHEMA;
+           stmt.unwrap(Statement.class).executeUpdate(sSql);
+            stmt.close();
             connAltibase.close();
             /* now upload sample */
             String[] args = new String[]{
                     "-o",
                     "-j:" + _sALTIBASE_DB_URL,
-                    "-u:" + _sALTIBASE_DB_USER,
-                    "-p:" + _sALTIBAES_DB_PASSWORD,
+                    "-u:" + "TESTSCHEMA",
+                    "-p:" + "MANAGER",
                     "-s:" + _sALTIBASE_SAMPLE_FILE,
-                    "pg_catalog", "testschema",
-                    "SampleSchema", "testschema"
+                    "pg_catalog", "TESTSCHEMA",
+                    "SampleSchema", "TESTSCHEMA"
             };
             SiardToDb stdb = new SiardToDb(args);
             assertEquals("SiardToDb failed!",0, stdb.getReturn());

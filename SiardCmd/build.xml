@@ -552,7 +552,7 @@ Created    : 29.08.2016, Hartwig Thomas
 	<!-- run Altibase tests -->
 	<property name="classaltibasetestsuite" value="ch.admin.bar.siard2.cmd._AltibaseTestSuite" />
 	<property name="filealtibasetests" value="altibase-tests" />
-	<target name="tests-altibase" depends="tests" if="dbuseraltibase">
+	<target name="tests-altibase" depends="tests" if="dbuserAltibase">
 		<echo message="${ant.project.name}: test-altibase run" />
 		<!--
 		<junit haltonerror="true" haltonfailure="true" fork="true" printsummary="on" dir="${basedir}">

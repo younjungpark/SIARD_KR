@@ -26,7 +26,7 @@ public class AltibaseFromDbTester extends BaseFromDbTester
     static
     {
         ConnectionProperties cp = new ConnectionProperties("Altibase");
-        _sAltibase_DB_URL = AltibaseDriver.getUrl("//" + cp.getHost() + ":" + cp.getPort() + "/" + cp.getCatalog());
+        _sAltibase_DB_URL = AltibaseDriver.getUrl("//" + cp.getHost() + ":" + cp.getPort()+"/"+cp.getCatalog()+"?date_format=yyyy-MM-dd");
         _sAltibase_DB_USER = cp.getUser();
         _sAltibase_DB_PASSWORD = cp.getPassword();
         _sAltibase_DBA_USER = cp.getDbaUser();
@@ -48,7 +48,6 @@ public class AltibaseFromDbTester extends BaseFromDbTester
             dsAltibase.setUser(_sAltibase_DBA_USER);
             dsAltibase.setPassword(_sAltibase_DBA_PASSWORD);
             AltibaseConnection connAltibase = (AltibaseConnection)dsAltibase.getConnection();
-            TestAltibaseDatabase.changeDateFormat(connAltibase);
             /* drop and create the test database */
             clearDatabase(connAltibase,
                           _sAltibase_DB_USER, // in Altibase the default schema is the same as the DB user.
