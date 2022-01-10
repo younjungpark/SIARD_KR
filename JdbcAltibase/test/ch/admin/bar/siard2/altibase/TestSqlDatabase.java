@@ -22,10 +22,7 @@ public class TestSqlDatabase
   public static final String _sTEST_SCHEMA = "TESTSQLSCHEMA";
   private static final String _sTEST_TABLE_SIMPLE = "TSQLSIMPLE";
   public static QualifiedId getQualifiedSimpleTable() { return new QualifiedId(null, null,_sTEST_TABLE_SIMPLE); }
-  /** MySQL does not really have any complex (DISTINCT, UDT, ARRAY) types,
-   * but we define a "complex table anyway, in order to exercise foreign
-   * keys.
-   */
+
   private static final String _sTEST_TABLE_COMPLEX = "TSQLCOMPLEX";
   public static QualifiedId getQualifiedComplexTable() { return new QualifiedId(null, null,_sTEST_TABLE_COMPLEX); }
   private static final String _sTEST_VIEW_SIMPLE = "VSQLSIMPLE";

@@ -365,26 +365,4 @@ public class TestAltibaseDatabase
     _conn.commit();
   } /* insertTable */
 
-  public static void changeDateFormat(Connection conn)
-  {
-    Statement stmt = null;
-    try
-    {
-      stmt = conn.createStatement();
-      stmt.execute("alter session set default_date_format = 'yyyy-MM-dd'");
-    }
-    catch (SQLException se) { System.out.println(EU.getExceptionMessage(se)); }
-    finally
-    {
-      try
-      {
-        stmt.close();
-      }
-      catch (SQLException e)
-      {
-        e.printStackTrace();
-      }
-    }
-  }
-
 } /* TestAltibaseDatabase */

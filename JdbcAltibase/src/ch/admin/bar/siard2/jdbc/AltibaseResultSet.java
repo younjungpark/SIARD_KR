@@ -216,12 +216,6 @@ public class AltibaseResultSet
 		super.updateRow();
 	} /* updateRow */
 
-	/* ------------------------------------------------------------------------ */
-	/**
-	 * {@inheritDoc}
-	 * Overridden as the Altibase driver simply throws an NotUpdatable exception
-	 * https://github.com/mysql/mysql-connector-j/blob/release/5.1/src/com/mysql/jdbc/JDBC4ResultSet.java
-	 */
 	@Override
 	public void updateSQLXML(int columnIndex, SQLXML xml) throws SQLException
 	{

@@ -660,7 +660,6 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 			System.out.println(o);
 			Timestamp ts = getResultSet().getTimestamp(tcd.getName());
 			Timestamp tsExpected = (Timestamp)tcd.getValue();
-			/* only 6 fractional seconds digits in MySQL */
 			tsExpected.setNanos(1000 * ((tsExpected.getNanos() + 499) / 1000));
 			assertEquals(ts.getNanos(), 123000);  // Altibase date only supports micro sec
 			//    assertEquals("Invalid Timestamp!",tsExpected,ts);
@@ -683,7 +682,6 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 			Calendar cal = new GregorianCalendar();
 			Timestamp ts = getResultSet().getTimestamp(tcd.getName(), cal);
 			Timestamp tsExpected = (Timestamp)tcd.getValue();
-			/* only 6 fractional seconds digits in MySQL */
 			tsExpected.setNanos(1000 * ((tsExpected.getNanos() + 499) / 1000));
 			assertEquals(ts.getNanos(), 123000);  // Altibase date only supports micro sec
 			//    assertEquals("Invalid Timestamp!",tsExpected,ts);

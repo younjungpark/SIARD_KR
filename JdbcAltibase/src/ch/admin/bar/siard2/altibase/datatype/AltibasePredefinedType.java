@@ -1,8 +1,8 @@
 /*======================================================================
-MySqlPredefinedType implements the type translation from ISO SQL to MySql
+AltibasePredefinedType implements the type translation from ISO SQL to Altibase
 Version     : $Id: $
 Application : SIARD2
-Description : MySqlPredefinedType implements the type translation from ISO SQL to MySql
+Description : AltibasePredefinedType implements the type translation from ISO SQL to Altibase
 Platform    : Java 7
 ------------------------------------------------------------------------
 Copyright  : 2016, Enter AG, Rüti ZH, Switzerland
@@ -93,4 +93,4 @@ public class AltibasePredefinedType extends PredefinedType
 		return sType;
 	} /* format */
 
-} /* class MySqlPredefinedType */
+} /* class AltibasePredefinedType */
