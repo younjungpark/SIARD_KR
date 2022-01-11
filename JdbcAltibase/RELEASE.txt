@@ -1,5 +1,5 @@
-Release Notes for JdbcCubrid 2.1
+Release Notes for JdbcAltibase 2.1
 ===============================
 
 2.1.0
-First release of JdbcCubrid on GitHub.
+First release of JdbcAltibase on GitHub.

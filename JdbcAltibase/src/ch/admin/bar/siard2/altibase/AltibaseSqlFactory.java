@@ -89,4 +89,4 @@ public class AltibaseSqlFactory extends BaseSqlFactory implements SqlFactory
 		return new AltibaseDropViewStatement(this);
 	} /* newDropTableStatement */
 
-} /* class CubridSqlFactory */
+} /* class AltibaseSqlFactory */
