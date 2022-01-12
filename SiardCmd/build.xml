@@ -121,8 +121,9 @@ Created    : 29.08.2016, Hartwig Thomas
 	<property name="jaraltibasejdbc" value="Altibase.jar" />
 	<property name="jarjdbcaltibase" value="jdbcaltibase.jar" />
 	<property name="jarjdbcaltibasetest" value="jdbcaltibase-test.jar" />
+	<property name="jarsqlite" value="sqlite-jdbc-3.30.1.jar" />
 	<property name="cpjdbcaltibase" value="${dirlib}/${jarjdbcaltibase};${dirlib}/${jaraltibasejdbc}" />
-	<property name="cpjdbcaltibase-test" value="${dirlib}/${jarjdbcaltibasetest}" />
+	<property name="cpjdbcaltibase-test" value="${dirlib}/${jarjdbcaltibasetest};${dirlib}/${jarsqlite}" />
 	<!-- siardapi -->
 	<property name="jarsiardapi" value="siardapi.jar" />
 	<property name="cpsiardapi" value="${dirlib}/${jarsiardapi}" />
