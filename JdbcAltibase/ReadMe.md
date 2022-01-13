@@ -1,5 +1,84 @@
 # 빌드
 
+## SiardKR 전체 빌드
+
+SiardKR의 최상위 경로에 allDeploy.cmd를 제공하고 있는데 이를 이용해 전체 모듈의 바이너리를 빌드해서 디플로이 할 수 있다. 하지만  SiardKR 자체적으로 윈도우용 cmd파일만 제공하고 리눅스용 셸스크립트 파일은 제공하지 않는 것으로 보인다.
+
+1. SiardKR은 빌드툴로 Ant를 사용하기 때문에 Ant가 설치되지 않은 경우 [http://ant.apache.org](http://ant.apache.org)에서 먼저 ANT를 설치해야 한다. 또한 컴파일을 위해 JDK 1.8 이상이 요구된다.
+2. 각 모듈안에 있는 build.properties.template 파일을 build.properties 로 복사한다.
+3. 모듈별로 build.properties 파일을 다음과 같이 일괄 수정한다.
+    1. git관련 설정이 있을 경우 빌드시 소스를 GitHub 레파지토리로 push를 하기 때문에 비활성화 한다.
+
+        ```
+        #git=/usr/bin/git
+        ```
+
+    2. 빌드 후 zip 파일로부터 바이너리 파일을 압축해제 하려면 dirdeploy에 디렉토리 경로를 입력한다.
+
+        ```
+        dirdeploy=D:\\siard
+        ```
+
+4. 윈도우 프롬프트에서 allDeploy.cmd 를 실행하여 바이너리 파일을 빌드한다.
+
+    ```
+    D:\opt\SiardKR>allDeploy.cmd
+    ----- DEPLOY - EnterUtilities
+    .
+    Buildfile: D:\opt\SiardKR\EnterUtilities\build.xml
+    
+    clean:
+         [echo] enterutils: clean
+    
+    init:
+         [echo] enterutils: init
+        [mkdir] Created dir: D:\opt\SiardKR\EnterUtilities\build
+        [mkdir] Created dir: D:\opt\SiardKR\EnterUtilities\build\classes
+        [mkdir] Created dir: D:\opt\SiardKR\EnterUtilities\build\tests
+        [mkdir] Created dir: D:\opt\SiardKR\EnterUtilities\tmp
+        [mkdir] Created dir: D:\opt\SiardKR\EnterUtilities\dist
+        [mkdir] Created dir: D:\opt\SiardKR\EnterUtilities\doc\javadoc
+    
+    check:
+         [echo] builddate: 13. Jan 2022
+         [copy] Copying 1 file to D:\opt\SiardKR\EnterUtilities\tmp
+         [echo] version: 2.1
+         [echo] revold: 95
+    [replaceregexp] The following file is missing: 'D:\opt\SiardKR\EnterUtilities\tmp\branch.properties'
+         [echo] branch: ${branch}
+    ...
+    ...
+    ```
+
+5. dirdeploy에 설정한 디렉토리에서 모든 바이너리 파일이 deploy된 것을 확인할 수 있다.
+
+    ```
+    D:\siard>dir
+     Volume in drive D is DATA
+     Volume Serial Number is 5026-59F3
+    
+     Directory of D:\siard
+    
+    2022-01-13  오전 11:44    <DIR>          .
+    2022-01-13  오전 11:44    <DIR>          ..
+    2022-01-13  오전 11:43    <DIR>          enterutils
+    2022-01-13  오전 11:43    <DIR>          jdbcaccess
+    2022-01-13  오전 11:43    <DIR>          jdbcaltibase
+    2022-01-13  오전 11:43    <DIR>          jdbcbase
+    2022-01-13  오전 11:43    <DIR>          jdbcdb2
+    2022-01-13  오전 11:43    <DIR>          jdbch2
+    2022-01-13  오전 11:43    <DIR>          jdbcmssql
+    2022-01-13  오전 11:43    <DIR>          jdbcmysql
+    2022-01-13  오전 11:43    <DIR>          jdbcoracle
+    2022-01-13  오전 11:43    <DIR>          jdbcpostgres
+    2022-01-13  오전 11:44    <DIR>          siardcmd
+    2022-01-13  오전 11:44    <DIR>          Siard_suite-2.1
+    2022-01-13  오전 11:43    <DIR>          zip64
+    ```
+
+
+## JdbcAltibase만 따로 빌드
+
 1. JdbcAltibase디렉토리 안에 있는 build.properties.template 파일을 build.properties로 복사한다.
 2. build.properties 파일 수정
     1. git관련 설정이 있을 경우 빌드시 소스를 GitHub 레파지토리로 push를 하기 때문에 비활성화 한다.
@@ -98,6 +177,54 @@
         ```
 
 
+## SiardGui만 따로 빌드
+
+SiardGui에는 JdbcAltibase를 포함한 모든 라이브러리가 포함되기 때문에 SiardGui만 빌드해도 SiardCmd나 SiardGui 프로그램을 사용할 수 있다.
+
+1. SiardGui디렉토리 안에 있는 build.properties.template 파일을 build.properties로 복사한다.
+2. build.properties 파일 수정
+    1. git관련 설정이 있을 경우 빌드시 소스를 GitHub 레파지토리로 push를 하기 때문에 비활성화 한다.
+
+        ```
+        #git=/usr/bin/git
+        ```
+
+    2. 빌드 후 zip 파일로부터 바이너리 파일을 압축해제 하려면 dirdeploy에 디렉토리 경로를 입력한다.
+
+        ```
+        dirdeploy=/home/test/opt/siard
+        ```
+
+3. ant deploy 타겟을 이용해 바이너리 파일 생성
+    1. deploy 타켓 실행 시 dirdeploy경로에 모든 바이너리 파일이 생성된다.
+
+        ```
+        $ ~/opt/siard/Siard_suite-2.1 > ls -al
+        합계 180
+        drwxr-xr-x 7 yjpark yjpark  4096  1월 13 12:03 .
+        drwxr-xr-x 5 yjpark yjpark  4096  1월 13 12:03 ..
+        -rw-r--r-- 1 yjpark yjpark 17598 10월 28 17:19 LICENSE.txt
+        -rw-r--r-- 1 yjpark yjpark   971 10월 28 17:19 README.txt
+        -rw-r--r-- 1 yjpark yjpark  1902 10월 28 17:19 RELEASE.txt
+        drwxr-xr-x 4 yjpark yjpark  4096  1월 13 12:03 doc
+        drwxr-xr-x 2 yjpark yjpark  4096  1월 13 12:03 etc
+        drwxr-xr-x 2 yjpark yjpark  4096  1월 13 12:03 hxd
+        drwxr-xr-x 2 yjpark yjpark  4096  1월 13 12:03 lib
+        -rw-r--r-- 1 yjpark yjpark   318 10월 28 17:19 log4j.properties
+        -rw-r--r-- 1 yjpark yjpark  8060 10월 28 17:19 siardfromdb.cmd
+        -rw-r--r-- 1 yjpark yjpark 17411 10월 28 17:19 siardfromdb.ps1
+        -rwxr-xr-x 1 yjpark yjpark  4668 10월 28 17:19 siardfromdb.sh
+        -rw-r--r-- 1 yjpark yjpark  8047 10월 28 17:19 siardgui.cmd
+        -rw-r--r-- 1 yjpark yjpark  8990 10월 28 17:19 siardgui.ico
+        -rw-r--r-- 1 yjpark yjpark 17328 10월 28 17:19 siardgui.ps1
+        -rwxr-xr-x 1 yjpark yjpark  4609 12월 28 10:38 siardgui.sh
+        -rw-r--r-- 1 yjpark yjpark  8093 10월 28 17:19 siardtodb.cmd
+        -rw-r--r-- 1 yjpark yjpark 17483 10월 28 17:19 siardtodb.ps1
+        -rwxr-xr-x 1 yjpark yjpark  4659 10월 28 17:19 siardtodb.sh
+        drwxr-xr-x 2 yjpark yjpark  4096  1월 13 12:03 testfiles
+        ```
+
+
 # 개발 환경
 
 JdbcAltibase 에는 이클립스나 인텔리J와 같은 개발툴을 위한 설정파일이 같이 포함되어 있기 때문에 각 개발툴의 프로젝트 임포트 기능을 통해 임포트 후 사용하면 된다.
@@ -138,7 +265,7 @@ JdbcAltibase 에는 이클립스나 인텔리J와 같은 개발툴을 위한 설
 
 JdbcAltibase에 포함되어 있는 junit 테스트 케이스를 수행하려면 빌드파일을 일부 수정하고 테스트용 ant 타켓을 실행하면 된다.
 
-1. build.properties파일에서 테스트용 알티베이스 서버 접속 정보 추가.
+1. JdbcAltibase/build.properties파일에서 테스트용 알티베이스 서버 접속 정보 추가.
 
     ```
     # ----------------------------------------------------------------------
@@ -287,7 +414,7 @@ JdbcAltibase에 포함되어 있는 junit 테스트 케이스를 수행하려면
 
 SiardCmd에 포함되어 있는 Altibase용 테스트 프로그램으로 추출, 재현 기능을 검증한다. 테스트를 수행하려면 빌드파일을 일부 수정해야 한다.
 
-1. SiardCmd/build.properties파일 안에 알티베이스 테스트용 서버 접속 정보를 추가한다.
+1. SiardCmd/build.properties파일 안에 알티베이스 테스트용 서버 접속 정보 추가.
 
     ```
     # ----------------------------------------------------------------------
@@ -302,7 +429,7 @@ SiardCmd에 포함되어 있는 Altibase용 테스트 프로그램으로 추출,
     dbapasswordAltibase=manager
     ```
 
-2. SiardCmd/build.xml 파일에서 Altibase 테스트 관련 junit 설정부분의 주석을 해제한다.
+2. SiardCmd/build.xml 파일에서 Altibase 테스트 관련 junit 설정부분의 주석 해제.
 
     ```xml
     <target name="tests-altibase" depends="tests" if="dbuserAltibase">
@@ -337,7 +464,7 @@ SiardCmd에 포함되어 있는 Altibase용 테스트 프로그램으로 추출,
     		-->
     ```
 
-3. tests-altibase 타겟을 실행하여 SiardCmd의 알티베이스 테스트를 수행한다.
+3. tests-altibase 타겟을 실행하여 SiardCmd의 알티베이스 테스트 수행.
 
     ```
     $ ~/work/SiardKR.git/SiardCmd > ant tests-altibase
@@ -403,6 +530,7 @@ SiardCmd에 포함되어 있는 Altibase용 테스트 프로그램으로 추출,
 4. SiardCmd/tmp/altibase-tests.txt 파일에서 상세 결과 확인.
 
     ```
+    [altibase-tests.txt]
     Testsuite: ch.admin.bar.siard2.cmd._AltibaseTestSuite
     Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.161 sec
     ------------- Standard Output ---------------
