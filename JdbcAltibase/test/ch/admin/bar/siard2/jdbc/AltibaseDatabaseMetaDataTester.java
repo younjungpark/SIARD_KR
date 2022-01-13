@@ -7,7 +7,6 @@ import java.util.regex.*;
 import static org.junit.Assert.*;
 
 import Altibase.jdbc.driver.AltibaseTypes;
-import Altibase.jdbc.driver.datatype.ColumnTypes;
 import org.junit.*;
 
 import ch.admin.bar.siard2.jdbcx.*;
@@ -164,22 +163,22 @@ public class AltibaseDatabaseMetaDataTester extends BaseDatabaseMetaDataTester
 							assertEquals("Invalid varchar mapping!", Types.VARCHAR, iDataType);
 							break;
 						case "NCHAR":
-							assertEquals("Invalid nchar mapping!", AltibaseTypes.NCHAR, iDataType);
+							assertEquals("Invalid nchar mapping!", Types.NCHAR, iDataType);
 							break;
 						case "NVARCHAR":
 							assertEquals("Invalid nvarchar mapping!", AltibaseTypes.NVARCHAR, iDataType);
 							break;
 						case "BYTE":
-							assertEquals("Invalid byte mapping!", AltibaseTypes.BYTE, iDataType);
+							assertEquals("Invalid byte mapping!", Types.BINARY, iDataType);
 							break;
 						case "VARBYTE":
-							assertEquals("Invalid varbyte mapping!", AltibaseTypes.VARBYTE, iDataType);
+							assertEquals("Invalid varbyte mapping!", Types.VARBINARY, iDataType);
 							break;
 						case "BLOB":
-							assertEquals("Invalid blob mapping!", ColumnTypes.BLOB, iDataType);
+							assertEquals("Invalid blob mapping!", Types.BLOB, iDataType);
 							break;
 						case "CLOB":
-							assertEquals("Invalid clob mapping!", ColumnTypes.CLOB, iDataType);
+							assertEquals("Invalid clob mapping!", Types.CLOB, iDataType);
 							break;
 						case "INTEGER":
 							assertEquals("Invalid int mapping!", Types.INTEGER, iDataType);
@@ -206,7 +205,7 @@ public class AltibaseDatabaseMetaDataTester extends BaseDatabaseMetaDataTester
 							assertEquals("Invalid double mapping!", Types.DOUBLE, iDataType);
 							break;
 						case "BIT":
-							assertEquals("Invalid bit mapping!", Types.BIT, iDataType);
+							assertEquals("Invalid bit mapping!", Types.BINARY, iDataType);
 							break;
 						case "bool":
 							assertEquals("Invalid bool mapping!", Types.BOOLEAN, iDataType);
@@ -215,7 +214,7 @@ public class AltibaseDatabaseMetaDataTester extends BaseDatabaseMetaDataTester
 							assertEquals("Invalid date mapping!", Types.TIMESTAMP, iDataType);
 							break;
 						case "GEOMETRY":
-							assertEquals("Invalid geometry mapping!", AltibaseTypes.GEOMETRY, iDataType);
+							assertEquals("Invalid geometry mapping!", Types.VARBINARY, iDataType);
 							break;
 						default:
 							fail("Invalid type " + sTypeName + "!");

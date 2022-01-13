@@ -1130,8 +1130,6 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 						Timestamp tsExpected = (Timestamp)tcd.getValue();
 						/* only 6 significant decimals */
 						tsExpected.setNanos(1000 * ((tsExpected.getNanos() + 499) / 1000));
-						// TODO Altibase does not support nanosec in Timestamp
-						//assertEquals("Invalid value for "+tcd.getType()+"!",(Timestamp)tcd.getValue(),ts);
 					}
 					else
 						fail("Type Timestamp expected for " + tcd.getType() + "!");
@@ -1622,7 +1620,7 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 			openResultSet(_sSqlQuerySimple, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
 
 			TestColumnDefinition tcd = findColumnDefinition(
-					_listCdSimple, "CNCLOB_1M");
+					_listCdSimple, "CNCLOB_255");
 			NClob nclob = getResultSet().getStatement().getConnection().createNClob();
 			nclob.setString(1l, (String)tcd.getValue());
 			getResultSet().updateNClob(tcd.getName(), nclob);
@@ -1649,9 +1647,7 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 		}
 		catch (SQLException se)
 		{
-			// Altibase does not support ResultSet.updateNClob();
-			assertTrue(se instanceof SQLFeatureNotSupportedException);
-			// fail(EU.getExceptionMessage(se));
+			fail(EU.getExceptionMessage(se));
 		}
 	} /* testUpdateNClob_Reader */
 
@@ -1670,9 +1666,7 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 		}
 		catch (SQLException se)
 		{
-			// Altibase does not support ResultSet.updateNClob();
-			assertTrue(se instanceof SQLFeatureNotSupportedException);
-			// fail(EU.getExceptionMessage(se));
+			fail(EU.getExceptionMessage(se));
 		}
 	} /* testUpdateNClob_Reader_Long */
 
