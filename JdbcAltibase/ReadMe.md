@@ -434,35 +434,35 @@ SiardCmd에 포함되어 있는 Altibase용 테스트 프로그램으로 추출,
 
     ```xml
     <target name="tests-altibase" depends="tests" if="dbuserAltibase">
-    		<echo message="${ant.project.name}: test-altibase run" />
-    		<!-- line : 557
-    		<junit haltonerror="true" haltonfailure="true" fork="true" printsummary="on" dir="${basedir}">
-    			  <sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
-    			  <formatter type="plain"/>
-    			  <classpath>
-    				<pathelement path="${dirbuildtests}"/>
-    				<pathelement path="${dirdist}/${jarfile}"/>
-    				<pathelement path="${cpantlr}"/>
-    				<pathelement path="${cpenterutils}"/>
-    				<pathelement path="${cpsqlparser}"/>
-    				<pathelement path="${cpjts}"/>
-    				<pathelement path="${cpjdbcbase}"/>
-    				<pathelement path="${cpjdbcbase-test}"/>
-    				<pathelement path="${cpjdbcaltibase}"/>
-    				<pathelement path="${cpjdbcaltibase-test}"/>
-    				<pathelement path="${cpjaxb}"/>
-    				<pathelement path="${cpzip64}"/>
-    				<pathelement path="${cpwoodstox}"/>
-    				<pathelement path="${cpmsv}"/>
-    				<pathelement path="${cpsiardapi}"/>
-    				<pathelement path="${cpjunit}"/>
-    				<pathelement path="${cpjsch}" />
-    			  </classpath>
-    			  <test name="${classaltibasetestsuite}"
-    				  outfile="${filealtibasetests}"
-    				  todir="${dirtmp}"/>
-    		</junit>
-    		-->
+            <echo message="${ant.project.name}: test-altibase run" />
+            <!-- line : 557
+            <junit haltonerror="true" haltonfailure="true" fork="true" printsummary="on" dir="${basedir}">
+                  <sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
+                  <formatter type="plain"/>
+                  <classpath>
+                    <pathelement path="${dirbuildtests}"/>
+                    <pathelement path="${dirdist}/${jarfile}"/>
+                    <pathelement path="${cpantlr}"/>
+                    <pathelement path="${cpenterutils}"/>
+                    <pathelement path="${cpsqlparser}"/>
+                    <pathelement path="${cpjts}"/>
+                    <pathelement path="${cpjdbcbase}"/>
+                    <pathelement path="${cpjdbcbase-test}"/>
+                    <pathelement path="${cpjdbcaltibase}"/>
+                    <pathelement path="${cpjdbcaltibase-test}"/>
+                    <pathelement path="${cpjaxb}"/>
+                    <pathelement path="${cpzip64}"/>
+                    <pathelement path="${cpwoodstox}"/>
+                    <pathelement path="${cpmsv}"/>
+                    <pathelement path="${cpsiardapi}"/>
+                    <pathelement path="${cpjunit}"/>
+                    <pathelement path="${cpjsch}" />
+                  </classpath>
+                  <test name="${classaltibasetestsuite}"
+                      outfile="${filealtibasetests}"
+                      todir="${dirtmp}"/>
+            </junit>
+            -->
     ```
 
 3. tests-altibase 타겟을 실행하여 SiardCmd의 알티베이스 테스트 수행.
@@ -544,3 +544,4 @@ SiardCmd에 포함되어 있는 Altibase용 테스트 프로그램으로 추출,
     Testcase: testSampleToAltibase took 0.738 sec
     Testcase: testAltibaseToAltibase took 0.448 sec
     ```
+5. 테스트 수행시 SQLITE에서 HISTORY테이블을 찾지 못해 실패하는 경우가 있는데 이 경우 siardgui를 실행시키고 생성된 siard.db파일을 SiardCmd/db 디렉토리에 복사하고 실행시키면 된다.
