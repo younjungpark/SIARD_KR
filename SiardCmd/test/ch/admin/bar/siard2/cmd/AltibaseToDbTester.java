@@ -63,8 +63,8 @@ public class AltibaseToDbTester extends BaseFromDbTester
             String[] args = new String[]{
                     "-o",
                     "-j:" + _sALTIBASE_DB_URL,
-                    "-u:" + "TESTSCHEMA",
-                    "-p:" + "MANAGER",
+                    "-u:" + _sALTIBASE_DBA_USER,
+                    "-p:" + _sALTIBASE_DBA_PASSWORD,
                     "-s:" + _sALTIBASE_SAMPLE_FILE,
                     "pg_catalog", "TESTSCHEMA",
                     "SampleSchema", "TESTSCHEMA"
