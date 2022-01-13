@@ -1,113 +1,129 @@
 @ECHO off
 
 REM - EnterUtilities
-@ECHO ----- DEPLOY - EnterUtilities-master
+@ECHO ----- DEPLOY - EnterUtilities
 @ECHO .
-CD EnterUtilities-master
+CD EnterUtilities
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcBase
-@ECHO ----- DEPLOY - JdbcBase-master
+@ECHO ----- DEPLOY - JdbcBase
 @ECHO .
-CD JdbcBase-master
+CD JdbcBase
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcAccess
-@ECHO ----- DEPLOY - JdbcAccess-master
+@ECHO ----- DEPLOY - JdbcAccess
 @ECHO .
-CD JdbcAccess-master
+CD JdbcAccess
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcDb2
-@ECHO ----- DEPLOY - JdbcDb2-master
+@ECHO ----- DEPLOY - JdbcDb2
 @ECHO .
-CD JdbcDb2-master
+CD JdbcDb2
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcH2
-@ECHO ----- DEPLOY - JdbcH2-master
+@ECHO ----- DEPLOY - JdbcH2
 @ECHO .
-CD JdbcH2-master
+CD JdbcH2
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcMsSql
-@ECHO ----- DEPLOY - JdbcMsSql-master
+@ECHO ----- DEPLOY - JdbcMsSql
 @ECHO .
-CD JdbcMsSql-master
+CD JdbcMsSql
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcMySql
-@ECHO ----- DEPLOY - JdbcMySql-master
+@ECHO ----- DEPLOY - JdbcMySql
 @ECHO .
-CD JdbcMySql-master
+CD JdbcMySql
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcOracle
-@ECHO ----- DEPLOY - JdbcOracle-master
+@ECHO ----- DEPLOY - JdbcOracle
 @ECHO .
-CD JdbcOracle-master
+CD JdbcOracle
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - JdbcPostgres
-@ECHO ----- DEPLOY - JdbcPostgres-master
+@ECHO ----- DEPLOY - JdbcPostgres
 @ECHO .
-CD JdbcPostgres-master
+CD JdbcPostgres
+CALL ANT deploy
+@ECHO .
+CD ..
+
+REM - JdbcCubrid
+@ECHO ----- DEPLOY - JdbcCubrid
+@ECHO .
+CD JdbcCubrid
+CALL ANT deploy
+@ECHO .
+CD ..
+
+REM - JdbcAltibase
+@ECHO ----- DEPLOY - JdbcAltibase
+@ECHO .
+CD JdbcAltibase
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - SqlParser
-@ECHO ----- DEPLOY - SqlParser-master
+@ECHO ----- DEPLOY - SqlParser
 @ECHO .
-CD SqlParser-master
+CD SqlParser
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - Zip64File
-@ECHO ----- DEPLOY - Zip64File-master
+@ECHO ----- DEPLOY - Zip64File
 @ECHO .
-CD Zip64File-master
+CD Zip64File
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - SiardApi
-@ECHO ----- DEPLOY - SiardApi-master
+@ECHO ----- DEPLOY - SiardApi
 @ECHO .
-CD SiardApi-master
+CD SiardApi
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - SiardCmd
-@ECHO ----- DEPLOY - SiardCmd-master
+@ECHO ----- DEPLOY - SiardCmd
 @ECHO .
-CD SiardCmd-master
+CD SiardCmd
 CALL ANT deploy
 @ECHO .
 CD ..
 
 REM - SiardGui
-@ECHO ----- DEPLOY - SiardGui-master
+@ECHO ----- DEPLOY - SiardGui
 @ECHO .
-CD SiardGui-master
+CD SiardGui
 CALL ANT deploy
 @ECHO .
 CD ..
