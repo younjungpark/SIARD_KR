@@ -265,7 +265,8 @@ JdbcAltibase 에는 이클립스나 인텔리J와 같은 개발툴을 위한 설
 
 JdbcAltibase에 포함되어 있는 junit 테스트 케이스를 수행하려면 빌드파일을 일부 수정하고 테스트용 ant 타켓을 실행하면 된다.
 
-1. JdbcAltibase/build.properties파일에서 테스트용 알티베이스 서버 접속 정보 추가.
+1. SiardKR의 테스트셋은 기본적으로 utf8 캐릭터셋에서 동작하므로 알티베이스 디비 인스턴스도 기본 캐릭터 셋을 UTF-8로 셋팅해야 한다. 
+2. JdbcAltibase/build.properties파일에서 테스트용 알티베이스 서버 접속 정보 추가.
 
     ```
     # ----------------------------------------------------------------------
@@ -280,48 +281,48 @@ JdbcAltibase에 포함되어 있는 junit 테스트 케이스를 수행하려면
     dbapassword=manager
     ```
 
-2. build.xml파일에서 junit 테스트 부분 주석 해제.
+3. build.xml파일에서 junit 테스트 부분 주석 해제.
 
     ```xml
     <!-- line : 240
-        	<junit haltonerror="true" haltonfailure="true" fork="true" printsummary="on" dir="${basedir}">
-          		<sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
-          		<formatter type="plain"/>
-          		<classpath>
-            		<pathelement path="${dirbuildtests}"/>
-            		<pathelement path="${dirdist}/${jarfile}"/>
-            		<pathelement path="${cpaltibasejdbc}"/>
-            		<pathelement path="${cpjdbcbase-test}"/>
-            		<pathelement path="${cpsqlparser}"/>
-            		<pathelement path="${cpenterutils}"/>
-            		<pathelement path="${cpantlr}}"/>
-            		<pathelement path="${cpjunit}"/>
-          		</classpath>
-          		<test name="${classdatasourcetester}"
-          			outfile="${filedatasourcetest}"
-          			todir="${dirtmp}"/>
-        	</junit>
-        	<junit haltonerror="true" haltonfailure="false" fork="true" printsummary="on" dir="${basedir}" showoutput="yes">
-          		<sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
-          		<formatter type="plain"/>
-          		<classpath>
-            		<pathelement path="${dirbuildtests}"/>
-            		<pathelement path="${dirdist}/${jarfile}"/>
-            		<pathelement path="${cpaltibasejdbc}"/>
-            		<pathelement path="${cpjdbcbase-test}"/>
-            		<pathelement path="${cpsqlparser}"/>
-            		<pathelement path="${cpenterutils}"/>
-            		<pathelement path="${cpantlr}"/>
-            		<pathelement path="${cpjunit}"/>
-          		</classpath>
-          		<test name="${classjdbctestsuite}"
-          			outfile="${filejdbctests}"
-          			todir="${dirtmp}"/>
-        	</junit>
+            <junit haltonerror="true" haltonfailure="true" fork="true" printsummary="on" dir="${basedir}">
+                  <sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
+                  <formatter type="plain"/>
+                  <classpath>
+                    <pathelement path="${dirbuildtests}"/>
+                    <pathelement path="${dirdist}/${jarfile}"/>
+                    <pathelement path="${cpaltibasejdbc}"/>
+                    <pathelement path="${cpjdbcbase-test}"/>
+                    <pathelement path="${cpsqlparser}"/>
+                    <pathelement path="${cpenterutils}"/>
+                    <pathelement path="${cpantlr}}"/>
+                    <pathelement path="${cpjunit}"/>
+                  </classpath>
+                  <test name="${classdatasourcetester}"
+                      outfile="${filedatasourcetest}"
+                      todir="${dirtmp}"/>
+            </junit>
+            <junit haltonerror="true" haltonfailure="false" fork="true" printsummary="on" dir="${basedir}" showoutput="yes">
+                  <sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
+                  <formatter type="plain"/>
+                  <classpath>
+                    <pathelement path="${dirbuildtests}"/>
+                    <pathelement path="${dirdist}/${jarfile}"/>
+                    <pathelement path="${cpaltibasejdbc}"/>
+                    <pathelement path="${cpjdbcbase-test}"/>
+                    <pathelement path="${cpsqlparser}"/>
+                    <pathelement path="${cpenterutils}"/>
+                    <pathelement path="${cpantlr}"/>
+                    <pathelement path="${cpjunit}"/>
+                  </classpath>
+                  <test name="${classjdbctestsuite}"
+                      outfile="${filejdbctests}"
+                      todir="${dirtmp}"/>
+            </junit>
     -->
     ```
 
-3. tests 타켓으로 JdbcAltibase 테스트케이스 수행
+4. tests 타켓으로 JdbcAltibase 테스트케이스 수행
 
     ```
     ~/work/SiardKR.git/JdbcAltibase > ant tests
@@ -388,7 +389,7 @@ JdbcAltibase에 포함되어 있는 junit 테스트 케이스를 수행하려면
     Total time: 11 seconds
     ```
 
-4.  상세한 테스트 결과는 JdbcAltibase/tmp/jdbc-tests.txt 파일에서 확인 가능.
+5. 상세한 테스트 결과는 JdbcAltibase/tmp/jdbc-tests.txt 파일에서 확인 가능.
 
     ```
     [jdbc-tests.txt]
