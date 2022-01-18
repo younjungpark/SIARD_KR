@@ -239,6 +239,7 @@ Created    : 16.06.2016, Simon Jutz
 		</javac>
 		<!--
     	<junit haltonerror="true" haltonfailure="true" fork="true" printsummary="on" dir="${basedir}">
+		    <jvmarg value="-Dfile.encoding=UTF-8"/>
       		<sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
       		<formatter type="plain"/>
       		<classpath>
@@ -256,6 +257,7 @@ Created    : 16.06.2016, Simon Jutz
       			todir="${dirtmp}"/>
     	</junit>
     	<junit haltonerror="true" haltonfailure="false" fork="true" printsummary="on" dir="${basedir}" showoutput="yes">
+		    <jvmarg value="-Dfile.encoding=UTF-8"/>
       		<sysproperty key="java.util.logging.config.file" value="${diretc}/debug.properties"/>
       		<formatter type="plain"/>
       		<classpath>
