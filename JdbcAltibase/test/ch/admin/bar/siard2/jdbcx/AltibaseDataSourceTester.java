@@ -18,7 +18,7 @@ import ch.enterag.utils.base.ConnectionProperties;
 public class AltibaseDataSourceTester {
     private static final ConnectionProperties _cp = new ConnectionProperties();
 
-    private static final String _sDB_URL = "jdbc:Altibase://" + _cp.getHost() + ":" + _cp.getPort();
+    private static final String _sDB_URL = "jdbc:Altibase://" + _cp.getHost() + ":" + _cp.getPort() + "/" + _cp.getCatalog();
     private static final String _sDBA_USER = _cp.getDbaUser();
     private static final String _sDBA_PASSWORD = _cp.getDbaPassword();
 
