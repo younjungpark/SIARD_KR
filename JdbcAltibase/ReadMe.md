@@ -18,7 +18,14 @@ SiardKR의 최상위 경로에 allDeploy.cmd를 제공하고 있는데 이를 �
         ```
         dirdeploy=D:\\siard
         ```
-
+    3. java8rtjar 에 rt.jar 파일의 경로를 입력한다.
+        ```
+        java8rtjar=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+        ```
+    4. SiardApi의 build.properties 파일에서 xjc에 적절한 디렉토리 경로를 입력한다.
+        ```
+        xjc=/usr/lib/jvm/java-8-openjdk-amd64/bin/xjc
+        ```
 4. 윈도우 프롬프트에서 allDeploy.cmd 를 실행하여 바이너리 파일을 빌드한다.
 
     ```
@@ -545,3 +552,6 @@ SiardCmd에 포함되어 있는 Altibase용 테스트 프로그램으로 추출,
     Testcase: testAltibaseToAltibase took 0.448 sec
     ```
 5. 테스트 수행시 SQLITE에서 HISTORY테이블을 찾지 못해 실패하는 경우가 있는데 이 경우 siardgui를 실행시키고 생성된 siard.db파일을 SiardCmd/db 디렉토리에 복사하고 실행시키면 된다.
+
+# 제약사항
+JdbcAltibase는 Jdbc Spec 4.x를 필요로 하기 때문에 알티베이스 서버 7.2 버전 이상에서 정상 동작한다.
