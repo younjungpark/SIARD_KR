@@ -258,8 +258,6 @@ public class AltibaseResultSet
 	{
 		if (x instanceof SQLXML)
 			updateSQLXML(columnIndex, (SQLXML)x);
-		else if (x instanceof NClob)
-			updateNClob(columnIndex, (NClob)x);
 		else
 			super.updateObject(columnIndex,x);
 	} /* updateObject */

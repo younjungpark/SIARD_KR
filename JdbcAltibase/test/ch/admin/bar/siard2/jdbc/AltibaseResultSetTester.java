@@ -1647,7 +1647,9 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 		}
 		catch (SQLException se)
 		{
-			fail(EU.getExceptionMessage(se));
+			// fail(EU.getExceptionMessage(se));
+			// Altibase does not support ResultSet.updateNClob();
+			assertTrue(se instanceof SQLFeatureNotSupportedException);
 		}
 	} /* testUpdateNClob_Reader */
 
@@ -1666,7 +1668,9 @@ public class AltibaseResultSetTester extends BaseResultSetTester
 		}
 		catch (SQLException se)
 		{
-			fail(EU.getExceptionMessage(se));
+			// fail(EU.getExceptionMessage(se));
+			// Altibase does not support ResultSet.updateNClob();
+			assertTrue(se instanceof SQLFeatureNotSupportedException);
 		}
 	} /* testUpdateNClob_Reader_Long */
 
