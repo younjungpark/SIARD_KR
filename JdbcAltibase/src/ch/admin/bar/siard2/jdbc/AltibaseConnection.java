@@ -219,4 +219,12 @@ public class AltibaseConnection extends BaseConnection implements Connection
 		throw new SQLFeatureNotSupportedException("UDT creation not supported for Altibase database!");
 	} /* createStruct */
 
+	/*------------------------------------------------------------------*/
+	/** {@inheritDoc} */
+	@Override
+	public NClob createNClob()
+			throws SQLException
+	{
+		return new AltibaseNClob();
+	} /* createNClob */
 } /* class H2Connection */
