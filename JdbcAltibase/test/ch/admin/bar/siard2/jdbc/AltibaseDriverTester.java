@@ -103,7 +103,7 @@ public class AltibaseDriverTester
 		int iMajorVersion = _driver.getMajorVersion();
 		int iMinorVersion = _driver.getMinorVersion();
 		String sVersion = String.valueOf(iMajorVersion) + "." + String.valueOf(iMinorVersion);
-		assertEquals("Wrong Altibase version " + sVersion + " found!", "7.2", sVersion);
+		assertEquals("Wrong Altibase version " + sVersion + " found!", "7.3", sVersion);
 	} /* testVersion */
 
 	@Test
